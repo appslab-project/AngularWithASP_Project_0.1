@@ -5,7 +5,10 @@
     "\\angular-project\\src",
     "\\angular-project\\src\\app",
     "\\angular-project\\src\\app\\dashboard",
-    "\\AspNetWebAPI"
+    "\\AspNetWebAPI",
+    "\\AspNetWebAPI\\Controllers",
+    "\\AspNetWebAPI\\Migrations"
   ],
+  "SelectedNode": "\\AspNetWebAPI\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }
