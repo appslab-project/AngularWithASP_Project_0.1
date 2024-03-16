@@ -28,13 +28,18 @@ export class AuthenticationService {
     this.authenticated.set(false);
   }
 
-  storeToken(token: string) {
-    localStorage.setItem("token", token);
+  storeUserCredentials(token: string, username: string) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('username', username);
     this.authenticated.set(true);
   }
 
+  getCurrentUsername(): string {
+    return this.isAuthenticated() ? localStorage.getItem('username') : null;
+  }
+
   private isAuthenticated() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
 
     return token && !this.jwtHelper.isTokenExpired(token);
   }

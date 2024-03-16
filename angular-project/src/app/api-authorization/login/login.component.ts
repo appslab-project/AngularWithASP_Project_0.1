@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.loginUser({...this.loginForm.value}).subscribe({
         next: (response) => {
-          this.authService.storeToken(response.token);
+          this.authService.storeUserCredentials(response.token, response.username);
           this.router.navigate(['/']);
         },
         error: (err) => console.log("Oops, something went wrong", err)
