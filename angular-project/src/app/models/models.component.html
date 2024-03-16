@@ -1,0 +1,54 @@
+<body>
+
+
+  <div class="modelcomp" *ngFor="let models of modelInfo()">
+
+
+    <h3>Owner</h3>
+    {{models.ownerId}}
+    <div>
+      <img src="\assets\images\penholder.JPG" />
+    </div>
+    <h3>{{models.name}}</h3>
+    <div class="container">
+      <div>
+        <p>{{models.category}}</p>
+
+      </div>
+
+      <div class="category">
+        <p><img class="like_button" src="\assets\images\like_icon.png" />{{models.likes}}</p>
+      </div>
+    </div>
+
+    <!--<div class="grid-container">
+
+      <div class="grid-item">
+        <h3>OwnerId:</h3>
+        {{models.ownerId}}
+      </div>
+
+      <div class="grid-item">
+        <p>LVES</p>
+      </div>
+
+      <div class="grid-item">
+        <img src="gif_image.gif" alt="GIF Image">
+        <p>GIF</p>
+      </div>
+
+      <div class="grid-item">
+        <img src="/placeholder.jpg">
+        <h3>Name:</h3>
+        {{models.name}}
+      </div>
+
+      <div class="grid-item">
+        <p>645</p>
+      </div>
+    </div>-->
+
+
+
+  </div>
+</body>

@@ -49,6 +49,7 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+builder.Services.AddScoped<IBEService, BEService>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
