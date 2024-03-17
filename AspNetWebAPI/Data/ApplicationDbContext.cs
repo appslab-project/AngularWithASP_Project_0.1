@@ -11,5 +11,8 @@ namespace AspNetCoreAPI.Data
             : base(options)
         {
         }
+
+        public DbSet<ModelInformations> ModelInformations { get; set; }
+
     }
 }

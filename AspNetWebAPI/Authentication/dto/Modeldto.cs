@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreAPI.dto
+﻿namespace AspNetCoreAPI.Authentication.dto
 {
     public class Modeldto
     {
