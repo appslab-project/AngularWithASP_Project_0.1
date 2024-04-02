@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit, signal } from '@angular/core';
 import { ModelServiceService, Modeldto } from '../Service/model-service.service';
+import { CommonModule } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { ModelServiceService, Modeldto } from '../Service/model-service.service'
 @Component({
   selector: 'app-models',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './models.component.html',
   styleUrl: './models.component.css'
 })

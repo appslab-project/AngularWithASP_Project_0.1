@@ -11,6 +11,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { errorHandlerInterceptor } from './app/api-authorization/error-handler.interceptor';
 import { authGuard } from './app/api-authorization/auth.guard';
 import { jwtInterceptor } from './app/api-authorization/jwt.interceptor';
+import { ModelsComponent } from './app/models/models.component';
 
 export function getBaseUrl() {
   return 'https://localhost:7186/api';
@@ -39,7 +40,8 @@ bootstrapApplication(AppComponent, {
       provideRouter([
         { path: '', component: DashboardComponent, canActivate: [authGuard]},
         { path: 'login', component: LoginComponent},
-        { path: 'register', component: RegistrationComponent}
+        { path: 'register', component: RegistrationComponent },
+        { path: 'models', component: ModelsComponent }
       ])
     ]
 })
