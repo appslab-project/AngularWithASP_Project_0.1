@@ -12,6 +12,7 @@ import { errorHandlerInterceptor } from './app/api-authorization/error-handler.i
 import { authGuard } from './app/api-authorization/auth.guard';
 import { jwtInterceptor } from './app/api-authorization/jwt.interceptor';
 import { ModelsComponent } from './app/models/models.component';
+import { ModelsDetailsComponent } from './app/models-details/models-details.component';
 
 export function getBaseUrl() {
   return 'https://localhost:7186/api';
@@ -41,7 +42,8 @@ bootstrapApplication(AppComponent, {
         { path: '', component: DashboardComponent, canActivate: [authGuard]},
         { path: 'login', component: LoginComponent},
         { path: 'register', component: RegistrationComponent },
-        { path: 'models', component: ModelsComponent }
+        { path: 'models', component: ModelsComponent },
+        { path: 'modelDetails/:modelId', component: ModelsDetailsComponent },
       ])
     ]
 })

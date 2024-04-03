@@ -19,6 +19,7 @@
       <div class="category">
         <p><img class="like_button" src="\assets\images\like_icon.png" />{{models.likes}}</p>
       </div>
+      <button mat-button [routerLink]="['/modelDetails', models.id]">Details</button>
     </div>
 
     <!--<div class="grid-container">

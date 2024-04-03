@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,12 @@ export class ModelServiceService {
 
     return this.http.get<Modeldto[]>(this.baseUrl + '/models/getModel')
   }
+
+  getDetails(id: number) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id", id);
+    return this.http.get<ModelDetailsdto[]>(this.baseUrl + '/models/getModelDetails', { params: queryParams });
+  }
 }
 
 export interface Modeldto {
@@ -25,4 +32,12 @@ export interface Modeldto {
   category: string;
   likes: number;
   ownerId: number;
+}
+export interface ModelDetailsdto {
+  id: number;
+  name: string;
+  category: string;
+  likes: number;
+  ownerId: number;
+  description: string;
 }

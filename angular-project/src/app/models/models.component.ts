@@ -1,6 +1,9 @@
 import { Component, Injectable, OnInit, signal } from '@angular/core';
 import { ModelServiceService, Modeldto } from '../Service/model-service.service';
 import { CommonModule } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { MatToolbar } from '@angular/material/toolbar';
+import { RouterLink } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +11,11 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-models',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,
+    MatToolbar,
+    MatButton,
+    RouterLink,
+  ],
   templateUrl: './models.component.html',
   styleUrl: './models.component.css'
 })

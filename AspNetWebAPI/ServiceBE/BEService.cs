@@ -7,6 +7,7 @@ namespace AspNetCoreAPI.ServiceBE
     public interface IBEService
     {
         public IEnumerable<Modeldto> MapModelToDto(IEnumerable<ModelInformations> models);
+        public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails);
     }
     public class BEService : IBEService
     {
@@ -32,6 +33,21 @@ namespace AspNetCoreAPI.ServiceBE
                 Likes = models.Likes,
                 OwnerId = models.OwnerId,
             });
+        }
+
+        public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails)
+        {
+
+            return  new ModelDetailsdto
+            {
+
+                Id = modelDetails.Id,
+                Name = modelDetails.Name,
+                Category = modelDetails.Category,
+                Likes = modelDetails.Likes,
+                OwnerId = modelDetails.OwnerId,
+                Description = modelDetails.Description
+            };
         }
     }
 }

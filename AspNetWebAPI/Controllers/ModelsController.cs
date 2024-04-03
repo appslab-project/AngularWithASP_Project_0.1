@@ -37,5 +37,13 @@ namespace AspNetCoreAPI.Controllers
             });*/
             return _modelBeService.MapModelToDto(models);
         }
+
+        [HttpGet("getModelDetails")]
+        public ModelDetailsdto GetModelDetails(int id)
+        {
+            var modelDetails = _context.ModelInformations.Find(id);
+            var info = _modelBeService.MapModelDetailsToDto(modelDetails);
+            return info;
+        }
     }
 }
