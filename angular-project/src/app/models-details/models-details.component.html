@@ -1,4 +1,23 @@
-<div *ngFor="let modelDetails of modelDetailInfo()">
-  <p>{{modelDetails.category}}</p>
-</div>
-<p>faga</p>
+<body>
+
+
+  <div class="modelcomp" *ngFor="let models of modelInfo()">
+
+
+    <h3>Owner</h3>
+    {{models.ownerId}}
+    <div>
+      <img src="\assets\images.jpg" />
+    </div>
+    <h3>{{models.name}}</h3>
+    <div class="container">
+      <div>
+        <p>{{models.category}}</p>
+
+      </div>
+
+      <div class="category">
+        <p><img class="like_button" src=".\assets\like_icon.png" />{{models.likes}}</p>
+      </div>
+      <button mat-button [routerLink]="['/modelDetails', models.id]">Details</button>
+    </div>
