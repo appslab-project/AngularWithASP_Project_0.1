@@ -26,15 +26,6 @@ namespace AspNetCoreAPI.Controllers
         public IEnumerable<Modeldto> GetModels()
         {
             IEnumerable<ModelInformations> models = _context.ModelInformations;
-            /*return models.Select(models => new Modeldto
-            {
-
-                Id = 5,
-                Name = "meno",
-                Category = "categoria",
-                Likes = 66,
-                OwnerId = 5,
-            });*/
             return _modelBeService.MapModelToDto(models);
         }
 
