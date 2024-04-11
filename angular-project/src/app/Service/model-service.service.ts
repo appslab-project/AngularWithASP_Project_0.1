@@ -19,10 +19,10 @@ export class ModelServiceService {
     return this.http.get<Modeldto[]>(this.baseUrl + '/models/getModel')
   }
 
-  getDetails(id: number) {
+  getDetails(id: number) : Observable<ModelDetailsdto> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id", id);
-    return this.http.get<ModelDetailsdto[]>(this.baseUrl + '/models/getModelDetails', { params: queryParams });
+    return this.http.get<ModelDetailsdto>(this.baseUrl + '/models/getModelDetails', { params: queryParams });
   }
 }
 

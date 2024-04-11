@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ModelsDetailsComponent {
   modelIdFromRoute: number;
-  modelDetailInfo = signal<ModelDetailsdto[]>(undefined);
+  modelDetailInfo = signal<ModelDetailsdto>(undefined);
   constructor(private model_service: ModelServiceService, private route: ActivatedRoute) {
 
   }
