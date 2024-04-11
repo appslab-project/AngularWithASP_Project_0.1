@@ -1,5 +1,24 @@
 <body>
 
+  <h1>Add model</h1>
+  <input type="text" placeholder="search" [(ngModel)]="searchText">
+  <form [formGroup]="modelCreateForm" (ngSubmit)="onSubmit()">
+
+    <label for="modelName">Model Name: </label>
+    <input id="modelName" type="text" formControlName="modelName">
+    <br />
+    <label for="category">Category: </label>
+    <input id="category" type="text" formControlName="category">
+    <br />
+    <label for="description">Description: </label>
+    <input id="description" type="text" min="0" formControlName="description">
+
+
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="modelCreateForm.invalid">Submit</button>
+
+  </form>
+
 
   <div class="modelcomp" *ngFor="let models of modelInfo()">
 

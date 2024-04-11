@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
+import { FormBuilder, FormControl, ReactiveFormsModule, FormGroup, Validators, FormsModule } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +16,29 @@ import { RouterLink } from '@angular/router';
     MatToolbar,
     MatButton,
     RouterLink,
+    FormsModule,
+    ReactiveFormsModule,
+    FormGroup,
+    Validators
   ],
   templateUrl: './models.component.html',
   styleUrl: './models.component.css'
 })
 export class ModelsComponent {
 
+  public modelCreateForm: FormControl;
   modelInfo = signal<Modeldto[]>(undefined);
-  constructor(private model_service: ModelServiceService) {
 
+  modelName: string;
+  category: string;
+  description: string;
+  constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder) {
+
+    this.modelCreateForm = this.formBuilder.group({
+      modelName: ['', Validators.required],
+      category: ['', Validators.required],
+      description: ['', Validators.required]
+    });
   }
 
   ngOnInit() {
@@ -31,6 +46,16 @@ export class ModelsComponent {
     this.model_service.getModels().subscribe(modelPage => {
       this.modelInfo.set(modelPage);
     }, error => console.error(error));
+  }
+  onSubmit() {
+    this.modelName = this.modelCreateForm.value.modelName;
+    this.category = this.modelCreateForm.value.category;
+    this.description = this.modelCreateForm.value.description;
+    // TODO: Use EventEmitter with form value
+   /* this.guildservice.addToGuildItem(this.guildName, this.description, this.maxMembers).subscribe(guildInfo => {
+      this.GuildData.set(guildInfo)
+
+    }, error => console.error(error));*/
   }
 
 }
