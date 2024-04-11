@@ -26,7 +26,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule, FormGroup, Validators, F
 })
 export class ModelsComponent {
 
-  public modelCreateForm: FormControl;
+  public modelCreateForm: FormGroup;
   modelInfo = signal<Modeldto[]>(undefined);
 
   modelName: string;
