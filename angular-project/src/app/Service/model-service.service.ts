@@ -28,7 +28,7 @@ export class ModelServiceService {
       .set("description", description)
       .set("ownerId", ownerId);
 
-    return this.http.put<ModelCreateDto>(this.baseUrl + '/models/createModel', { params: queryParams });
+    return this.http.put<Modeldto[]>(this.baseUrl + '/models/createModel', null, { params: queryParams });
 
   }
 }
