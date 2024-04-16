@@ -14,8 +14,9 @@
     "\\angular-project\\src\\assets",
     "\\angular-project\\src\\assets\\images",
     "\\AspNetWebAPI",
-    "\\AspNetWebAPI\\ServiceBE"
+    "\\AspNetWebAPI\\ServiceBE",
     "\\AspNetWebAPI\\Controllers"
   ],
+  "SelectedNode": "\\angular-project\\src\\app\\models\\models.component.html",
   "PreviewInSolutionExplorer": false
 }
