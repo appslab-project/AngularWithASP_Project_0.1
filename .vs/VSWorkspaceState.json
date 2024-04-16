@@ -4,14 +4,14 @@
     "\\angular-project",
     "\\angular-project\\src",
     "\\angular-project\\src\\app",
+    "\\angular-project\\src\\app\\api-authorization",
+    "\\angular-project\\src\\app\\api-authorization\\login",
+    "\\angular-project\\src\\app\\models",
     "\\angular-project\\src\\app\\models-details",
-    "\\angular-project\\src\\assets",
+    "\\angular-project\\src\\app\\Service",
     "\\AspNetWebAPI",
-    "\\AspNetWebAPI\\Authentication",
-    "\\AspNetWebAPI\\Authentication\\dto",
-    "\\AspNetWebAPI\\Controllers",
     "\\AspNetWebAPI\\ServiceBE"
   ],
-  "SelectedNode": "\\angular-project\\.angular",
+  "SelectedNode": "\\angular-project\\src\\app\\models\\models.component.html",
   "PreviewInSolutionExplorer": false
 }
