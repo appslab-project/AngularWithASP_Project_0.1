@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit, signal } from '@angular/core';
-import { ModelServiceService, Modeldto } from '../Service/model-service.service';
+import { ModelServiceService, Modeldto, ModelCreateDto } from '../Service/model-service.service';
 import { CommonModule } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -17,9 +17,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule, FormGroup, Validators, F
     MatButton,
     RouterLink,
     FormsModule,
-    ReactiveFormsModule,
-    FormGroup,
-    Validators
+    ReactiveFormsModule
   ],
   templateUrl: './models.component.html',
   styleUrl: './models.component.css'
@@ -28,7 +26,9 @@ export class ModelsComponent {
 
   public modelCreateForm: FormGroup;
   modelInfo = signal<Modeldto[]>(undefined);
+  modelCreateInfo = signal<ModelCreateDto>(undefined);
 
+  ownerId: number;
   modelName: string;
   category: string;
   description: string;
@@ -51,11 +51,12 @@ export class ModelsComponent {
     this.modelName = this.modelCreateForm.value.modelName;
     this.category = this.modelCreateForm.value.category;
     this.description = this.modelCreateForm.value.description;
+    this.ownerId = 5;
     // TODO: Use EventEmitter with form value
-   /* this.guildservice.addToGuildItem(this.guildName, this.description, this.maxMembers).subscribe(guildInfo => {
-      this.GuildData.set(guildInfo)
+    this.model_service.createModel(this.modelName, this.category, this.description, this.ownerId).subscribe(modelPage => {
+      this.modelCreateInfo.set(modelPage)
 
-    }, error => console.error(error));*/
+    }, error => console.error(error));
   }
 
 }
