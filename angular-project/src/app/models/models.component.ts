@@ -54,7 +54,7 @@ export class ModelsComponent {
     this.ownerId = 5;
     // TODO: Use EventEmitter with form value
     this.model_service.createModel(this.modelName, this.category, this.description, this.ownerId).subscribe(modelPage => {
-      this.modelCreateInfo.set(modelPage)
+      this.modelInfo.set(modelPage)
 
     }, error => console.error(error));
   }
