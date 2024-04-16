@@ -4,6 +4,7 @@ using AspNetCoreAPI.Models;
 using AspNetCoreAPI.ServiceBE;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace AspNetCoreAPI.Controllers
 {
@@ -36,5 +37,26 @@ namespace AspNetCoreAPI.Controllers
             var info = _modelBeService.MapModelDetailsToDto(modelDetails);
             return info;
         }
+        [HttpPut("createModel")]
+
+        public IEnumerable<Modeldto> CreateModel(string modelName, string category, string description, int ownerId) 
+        {
+            IEnumerable<ModelInformations> models = _context.ModelInformations;
+            var info = new ModelInformations
+            {
+
+                Name = modelName,
+                Category = category,
+                Description = description,
+                OwnerId = ownerId,
+
+
+            };
+            _context.Add(info);
+            _context.SaveChanges();
+
+            return _modelBeService.MapModelToDto(models);
+        }
+     
     }
 }
