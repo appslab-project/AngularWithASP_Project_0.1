@@ -1,10 +1,17 @@
 import { Component, Injectable, OnInit, signal } from '@angular/core';
 import { ModelServiceService, Modeldto, ModelCreateDto } from '../Service/model-service.service';
 import { CommonModule } from '@angular/common';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormControl, ReactiveFormsModule, FormGroup, Validators, FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltip } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +24,15 @@ import { FormBuilder, FormControl, ReactiveFormsModule, FormGroup, Validators, F
     MatButton,
     RouterLink,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    MatTooltip,
+    MatCardModule,
   ],
   templateUrl: './models.component.html',
   styleUrl: './models.component.css'

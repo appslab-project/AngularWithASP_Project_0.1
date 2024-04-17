@@ -1,16 +1,16 @@
 <body>
-
-
-  
-
-
-    <h3>Owner</h3>
-    {{modelDetailInfo().ownerId}}
-    <div>
-      <img src="\assets\images\images.jpg" /> 
-    </div>
-    <h3>{{modelDetailInfo().name}}</h3>
-    <div class="container">
-      <div>
-        <p>{{modelDetailInfo().category}}</p>
-        <p>{{modelDetailInfo().description}}</p>
+  <div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{modelDetailInfo().name}}</mat-card-title>
+        <mat-card-subtitle>{{modelDetailInfo().ownerId}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="\assets\images\images.jpg">
+      <mat-card-content>
+        <h3 class="desc">{{modelDetailInfo().category}}</h3>
+        <mat-card-subtitle>{{modelDetailInfo().description}}</mat-card-subtitle>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</body>

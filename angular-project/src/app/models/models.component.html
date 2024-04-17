@@ -1,73 +1,62 @@
 <body>
 
-  <h1>Add model</h1>
+  <h1>Models</h1>
+
   <form [formGroup]="modelCreateForm" (ngSubmit)="onSubmit()">
 
-    <label for="modelName">Model Name: </label>
-    <input id="modelName" type="text" formControlName="modelName">
-    <br />
-    <label for="category">Category: </label>
-    <input id="category" type="text" formControlName="category">
-    <br />
-    <label for="description">Description: </label>
-    <input id="description" type="text" min="0" formControlName="description">
+    <div class="host">
+      <mat-form-field>
+        <mat-label>Model Name:</mat-label>
+        <input matInput id="modelName" type="text" formControlName="modelName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description:</mat-label>
+        <input matInput id="description" type="text" formControlName="description">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select matInput id="category" type="text" formControlName="category">
+          <mat-option value="Work">Work</mat-option>
+          <mat-option value="Toys">Toys</mat-option>
+          <mat-option value="Parts">Parts</mat-option>
+          <mat-option value="Stands">Stands</mat-option>
+          <mat-option value="Vehicles">Vehicles</mat-option>
+          <mat-option value="Another">Another</mat-option>
+        </mat-select>
+      </mat-form-field>
 
+      <button mat-button disabledInteractive [disabled]="modelCreateForm.invalid" matTooltip="You need to fill out the form!">
+        Submmit
+      </button>
 
-    <p>Complete the form to enable button.</p>
-    <button type="submit" [disabled]="modelCreateForm.invalid">Submit</button>
+    </div>
 
   </form>
+  
 
 
   <div class="modelcomp" *ngFor="let models of modelInfo()">
 
-
-    <h3>Owner</h3>
-    {{models.ownerId}}
-    <div>
-      <img src="\assets\images\images.jpg" />
-    </div>
-    <h3>{{models.name}}</h3>
-    <div class="container">
-      <div>
-        <p>{{models.category}}</p>
-
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{models.name}}</mat-card-title>
+        <mat-card-subtitle>{{models.ownerId}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="\assets\images\images.jpg">
+      <mat-card-content>
+        <p class="desc">{{models.category}}</p>
+      </mat-card-content>
+      <div class=" container">
+        <mat-card-actions>
+          <button mat-icon-button matTooltip="Like" aria-label="Example icon-button with a heart icon">
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <p class="desc">{{models.likes}}</p>
+          <button class="Details" mat-button [routerLink]="['/modelDetails', models.id]">Details</button>
+        </mat-card-actions>
       </div>
-
-      <div class="category">
-        <p><img class="like_button" src="\assets\images\like_icon.png" />{{models.likes}}</p>
-      </div>
-      <button mat-button [routerLink]="['/modelDetails', models.id]">Details</button>
-    </div>
-
-    <!--<div class="grid-container">
-
-      <div class="grid-item">
-        <h3>OwnerId:</h3>
-        {{models.ownerId}}
-      </div>
-
-      <div class="grid-item">
-        <p>LVES</p>
-      </div>
-
-      <div class="grid-item">
-        <img src="gif_image.gif" alt="GIF Image">
-        <p>GIF</p>
-      </div>
-
-      <div class="grid-item">
-        <img src="/placeholder.jpg">
-        <h3>Name:</h3>
-        {{models.name}}
-      </div>
-
-      <div class="grid-item">
-        <p>645</p>
-      </div>
-    </div>-->
-
-
+    </mat-card> 
 
   </div>
 </body>

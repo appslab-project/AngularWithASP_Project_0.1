@@ -1,63 +1,50 @@
 body {
 }
 
+.example-card {
+  max-width: 400px;
+  box-shadow: 0px 0px 10px rgb(202, 202, 202);
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
 .modelcomp {
   display: inline-grid;
   column-gap: 50px;
   flex-direction: column;
   align-items: start;
-  background-color: rgb(202, 202, 202);
-  width: 300px;
-  height: 330px;
-  border: 0px solid black;
+  width: 330px;
+  height: 400px;
   border-radius: 20px;
-  box-shadow: 0px 0px 10px rgb(202, 202, 202);
+  margin: 10px;
   padding: 10px;
-  margin: 10px
-}
-
-img {
-  width: 200px;
-  height: 150px;
-}
-
-h3 {
-  font-size: 20px;
 }
 
 .container {
-  position: relative;
+  display: flex;
 }
 
-.category {
-  position: absolute;
-  right: 20px;
-  top: 10px;
+.Details {
+  marginLeft: auto;
 }
 
-.like_button {
-  width: 20px;
-  height: 20px;
-}
-/*.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 10px;
+
+.host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px;
   padding: 10px;
 }
 
-.grid-item {
-  border: 1px solid #ddd;
+h1 {
+  margin: 10px;
   padding: 10px;
-  text-align: center;
 }
 
-  .grid-item img {
-    max-width: 100%;
-    height: auto;
-  }*/
-/*img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-}*/
+.desc {
+  padding-top: 12px;
+}
