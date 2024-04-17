@@ -1,0 +1,32 @@
+<body>
+  <h1>Create a Model</h1>
+  <form [formGroup]="modelCreateForm" (ngSubmit)="onSubmit()">
+
+    <div class="host">
+      <mat-form-field>
+        <mat-label>Model Name:</mat-label>
+        <input matInput id="modelName" type="text" formControlName="modelName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description:</mat-label>
+        <input matInput id="description" type="text" formControlName="description">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select matInput id="category" type="text" formControlName="category">
+          <mat-option value="Work">Work</mat-option>
+          <mat-option value="Toys">Toys</mat-option>
+          <mat-option value="Parts">Parts</mat-option>
+          <mat-option value="Stands">Stands</mat-option>
+          <mat-option value="Vehicles">Vehicles</mat-option>
+          <mat-option value="Another">Another</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-button disabledInteractive [disabled]="modelCreateForm.invalid" matTooltip="You need to fill out the form!" >Submmit</button>
+
+    </div>
+
+  </form>
+</body>
+

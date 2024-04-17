@@ -1,11 +1,12 @@
 <mat-toolbar>
-  <span>My web app</span>
+  <span>3D Library</span>
   <span class="spacer"></span>
+  <button mat-button [routerLink]="['/models']">Models</button>
+  <button mat-button [routerLink]="['/modelsCreate']">Create Model</button>
   @if (authService.authenticated()) {
   <button mat-button (click)="logout()">Logout</button>
   } @else {
   <button mat-button [routerLink]="['/login']">Login</button>
   <button mat-button [routerLink]="['/register']">Registration</button>
   }
-  <button mat-button [routerLink]="['/models']">Models</button>
 </mat-toolbar>

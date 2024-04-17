@@ -1,28 +1,23 @@
-import { Component, Injectable, OnInit, signal } from '@angular/core';
-import { ModelServiceService, Modeldto, ModelCreateDto } from '../Service/model-service.service';
 import { CommonModule } from '@angular/common';
-import { MatButton, MatButtonModule } from '@angular/material/button';
-import { MatToolbar } from '@angular/material/toolbar';
-import { RouterLink } from '@angular/router';
-import { FormBuilder, FormControl, ReactiveFormsModule, FormGroup, Validators, FormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
+import { Component, signal } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
-import { MatCardModule } from '@angular/material/card';
+import { ModelServiceService, Modeldto } from '../Service/model-service.service';
+import { MatSelectModule } from '@angular/material/select';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
 @Component({
-  selector: 'app-models',
+  selector: 'app-model-create',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     MatToolbar,
     MatButton,
-    RouterLink,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -30,22 +25,23 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatButtonModule,
     MatDividerModule,
-    MatIconModule,
     MatTooltip,
-    MatCardModule,
+    RouterModule,
   ],
-  templateUrl: './models.component.html',
-  styleUrl: './models.component.css'
+  templateUrl: './model-create.component.html',
+  styleUrl: './model-create.component.css'
 })
-export class ModelsComponent {
+export class ModelCreateComponent {
 
   public modelCreateForm: FormGroup;
   modelInfo = signal<Modeldto[]>(undefined);
+
 
   ownerId: number;
   modelName: string;
   category: string;
   description: string;
+
   constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder) {
 
     this.modelCreateForm = this.formBuilder.group({
@@ -55,12 +51,6 @@ export class ModelsComponent {
     });
   }
 
-  ngOnInit() {
-
-    this.model_service.getModels().subscribe(modelPage => {
-      this.modelInfo.set(modelPage);
-    }, error => console.error(error));
-  }
   onSubmit() {
     this.modelName = this.modelCreateForm.value.modelName;
     this.category = this.modelCreateForm.value.category;
@@ -71,6 +61,5 @@ export class ModelsComponent {
       this.modelInfo.set(modelPage)
 
     }, error => console.error(error));
-  }
-
+  } 
 }

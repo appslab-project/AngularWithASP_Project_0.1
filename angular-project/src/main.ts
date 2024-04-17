@@ -13,6 +13,7 @@ import { authGuard } from './app/api-authorization/auth.guard';
 import { jwtInterceptor } from './app/api-authorization/jwt.interceptor';
 import { ModelsComponent } from './app/models/models.component';
 import { ModelsDetailsComponent } from './app/models-details/models-details.component';
+import { ModelCreateComponent } from './app/model-create/model-create.component';
 
 export function getBaseUrl() {
   return 'https://localhost:7186/api';
@@ -44,6 +45,7 @@ bootstrapApplication(AppComponent, {
         { path: 'register', component: RegistrationComponent },
         { path: 'models', component: ModelsComponent },
         { path: 'modelDetails/:modelId', component: ModelsDetailsComponent },
+        { path: 'modelsCreate', component: ModelCreateComponent },
       ])
     ]
 })
