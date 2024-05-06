@@ -29,6 +29,15 @@ namespace AspNetCoreAPI.Controllers
             IEnumerable<ModelInformations> models = _context.ModelInformations;
             return _modelBeService.MapModelToDto(models);
         }
+        [HttpGet("getMyModel")]
+        public IEnumerable<Modeldto> GetModels(string id)
+        {
+        
+            IEnumerable<ModelInformations> models = _context.ModelInformations.Where(model => model.OwnerId == id);
+
+
+            return _modelBeService.MapModelToDto(models);
+        }
 
         [HttpGet("getModelDetails")]
         public ModelDetailsdto GetModelDetails(int id)
@@ -39,7 +48,7 @@ namespace AspNetCoreAPI.Controllers
         }
         [HttpPut("createModel")]
 
-        public IEnumerable<Modeldto> CreateModel(string modelName, string category, string description, int ownerId) 
+        public IEnumerable<Modeldto> CreateModel(string modelName, string category, string description, string ownerId) 
         {
             IEnumerable<ModelInformations> models = _context.ModelInformations;
             var info = new ModelInformations

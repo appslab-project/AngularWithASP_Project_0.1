@@ -1,0 +1,29 @@
+<p>my-models works!</p>
+
+<body>
+
+<div class="modelcomp" *ngFor="let models of modelInfo()">
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{models.name}}</mat-card-title>
+    <mat-card-subtitle>{{models.ownerId}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="\assets\images\images.jpg">
+  <mat-card-content>
+    <p class="desc">{{models.category}}</p>
+  </mat-card-content>
+  <div class=" container">
+    <mat-card-actions>
+      <button mat-icon-button matTooltip="Like" aria-label="Example icon-button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <p class="desc">{{models.likes}}</p>
+      <button class="Details" mat-button [routerLink]="['/modelDetails', models.id]">Details</button>
+    </mat-card-actions>
+  </div>
+</mat-card>
+
+  </div>
+</body>

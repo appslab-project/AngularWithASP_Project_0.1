@@ -28,15 +28,21 @@ export class AuthenticationService {
     this.authenticated.set(false);
   }
 
-  storeUserCredentials(token: string, username: string) {
+  storeUserCredentials(token: string, username: string, id: string) {
     localStorage.setItem('token', token);
     localStorage.setItem('username', username);
+    localStorage.setItem('id', id)
     this.authenticated.set(true);
   }
 
   getCurrentUsername(): string {
     return this.isAuthenticated() ? localStorage.getItem('username') : null;
   }
+
+  getCurrentId(): string {
+    return this.isAuthenticated() ? localStorage.getItem('id') : null;
+  }
+
 
   private isAuthenticated() {
     const token = localStorage.getItem('token');

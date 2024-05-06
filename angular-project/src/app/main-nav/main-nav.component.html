@@ -3,6 +3,8 @@
   <span class="spacer"></span>
   <button mat-button [routerLink]="['/models']">Models</button>
   <button mat-button [routerLink]="['/modelsCreate']">Create Model</button>
+  <button mat-button [routerLink]="['/myModels']">My models</button>
+
   @if (authService.authenticated()) {
   <button mat-button (click)="logout()">Logout</button>
   } @else {

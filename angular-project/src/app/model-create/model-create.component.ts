@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ModelServiceService, Modeldto } from '../Service/model-service.service';
@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
+import { AuthenticationService } from '../api-authorization/authentication.service';
+
 
 @Component({
   selector: 'app-model-create',
@@ -35,9 +37,10 @@ export class ModelCreateComponent {
 
   public modelCreateForm: FormGroup;
   modelInfo = signal<Modeldto[]>(undefined);
+  private authService: AuthenticationService = inject(AuthenticationService);
 
 
-  ownerId: number;
+  ownerId: string;
   modelName: string;
   category: string;
   description: string;
@@ -55,7 +58,7 @@ export class ModelCreateComponent {
     this.modelName = this.modelCreateForm.value.modelName;
     this.category = this.modelCreateForm.value.category;
     this.description = this.modelCreateForm.value.description;
-    this.ownerId = 5;
+    this.ownerId = this.authService.getCurrentId();
     // TODO: Use EventEmitter with form value
     this.model_service.createModel(this.modelName, this.category, this.description, this.ownerId).subscribe(modelPage => {
       this.modelInfo.set(modelPage)

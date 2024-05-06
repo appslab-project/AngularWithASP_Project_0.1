@@ -21,7 +21,7 @@ export class ModelServiceService {
     queryParams = queryParams.append("id", id);
     return this.http.get<ModelDetailsdto>(this.baseUrl + '/models/getModelDetails', { params: queryParams });
   }
-  createModel(modelName: string, category: string, description: string,  ownerId: number) {
+  createModel(modelName: string, category: string, description: string,  ownerId: string) {
     let queryParams = new HttpParams()
       .set("modelName", modelName)
       .set("category", category)
@@ -31,6 +31,11 @@ export class ModelServiceService {
     return this.http.put<Modeldto[]>(this.baseUrl + '/models/createModel', null, { params: queryParams });
 
   }
+  getMyModels(id:string) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id", id);
+    return this.http.get<Modeldto[]>(this.baseUrl + '/models/getMyModel', { params: queryParams })
+  }
 }
 
 export interface Modeldto {
@@ -38,19 +43,19 @@ export interface Modeldto {
   name: string;
   category: string;
   likes: number;
-  ownerId: number;
+  ownerId: string;
 }
 export interface ModelDetailsdto {
   id: number;
   name: string;
   category: string;
   likes: number;
-  ownerId: number;
+  ownerId: string;
   description: string;
 }
 
 export interface ModelCreateDto {
-  ownerId: number;
+  ownerId: string;
   name: string;
   description: string;
   category: string;

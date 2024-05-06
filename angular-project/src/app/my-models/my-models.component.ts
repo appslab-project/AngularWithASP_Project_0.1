@@ -14,11 +14,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { AuthenticationService } from '../api-authorization/authentication.service';
 
-@Injectable({
-  providedIn: 'root'
-})
 @Component({
-  selector: 'app-models',
+  selector: 'app-my-models',
   standalone: true,
   imports: [CommonModule,
     MatToolbar,
@@ -35,44 +32,21 @@ import { AuthenticationService } from '../api-authorization/authentication.servi
     MatTooltip,
     MatCardModule,
   ],
-  templateUrl: './models.component.html',
-  styleUrl: './models.component.css'
+  templateUrl: './my-models.component.html',
+  styleUrl: './my-models.component.css'
 })
-export class ModelsComponent {
-
-  public modelCreateForm: FormGroup;
+export class MyModelsComponent {
   modelInfo = signal<Modeldto[]>(undefined);
   private authService: AuthenticationService = inject(AuthenticationService);
-  ownerId: string;
-  modelName: string;
-  category: string;
-  description: string;
-  constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder) {
 
-    this.modelCreateForm = this.formBuilder.group({
-      modelName: ['', Validators.required],
-      category: ['', Validators.required],
-      description: ['', Validators.required]
-    });
+  constructor(private model_service: ModelServiceService ) {
+
   }
 
   ngOnInit() {
 
-    this.model_service.getModels().subscribe(modelPage => {
+    this.model_service.getMyModels(this.authService.getCurrentId()).subscribe(modelPage => {
       this.modelInfo.set(modelPage);
     }, error => console.error(error));
   }
-  onSubmit() {
-    this.modelName = this.modelCreateForm.value.modelName;
-    this.category = this.modelCreateForm.value.category;
-    this.description = this.modelCreateForm.value.description;
-    this.ownerId = this.authService.getCurrentId();
-    console.log(this.ownerId);
-    // TODO: Use EventEmitter with form value
-    this.model_service.createModel(this.modelName, this.category, this.description, this.ownerId).subscribe(modelPage => {
-      this.modelInfo.set(modelPage)
-
-    }, error => console.error(error));
-  }
-
 }

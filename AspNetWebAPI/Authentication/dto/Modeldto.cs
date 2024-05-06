@@ -10,6 +10,6 @@
 
         public int Likes { get; set; }
 
-        public int OwnerId { get; set; }
+        public string OwnerId { get; set; }
     }
 }
