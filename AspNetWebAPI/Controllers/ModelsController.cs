@@ -30,7 +30,7 @@ namespace AspNetCoreAPI.Controllers
             return _modelBeService.MapModelToDto(models);
         }
         [HttpGet("getMyModel")]
-        public IEnumerable<Modeldto> GetModels(string id)
+        public IEnumerable<Modeldto> GetMyModels(string id)
         {
         
             IEnumerable<ModelInformations> models = _context.ModelInformations.Where(model => model.OwnerId == id);
@@ -66,6 +66,21 @@ namespace AspNetCoreAPI.Controllers
 
             return _modelBeService.MapModelToDto(models);
         }
-     
+        [HttpPut("deleteModel")]
+        public IEnumerable<Modeldto> DeleteModel(int id, string ownerId)
+        {
+
+            IEnumerable<ModelInformations> models = _context.ModelInformations.Where(xmodel => xmodel.OwnerId == ownerId); ;
+
+            var model = _context.ModelInformations.Find(id);
+            if (model == null)
+            {
+                return null;
+            }
+            _context.Remove(model);
+            _context.SaveChanges();
+            return _modelBeService.MapModelToDto(models);
+        }
+
     }
 }

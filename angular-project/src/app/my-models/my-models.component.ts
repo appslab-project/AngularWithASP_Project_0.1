@@ -49,4 +49,10 @@ export class MyModelsComponent {
       this.modelInfo.set(modelPage);
     }, error => console.error(error));
   }
+
+  deleteModel(id: number) {
+    this.model_service.deleteThisModel(id, this.authService.getCurrentId() ).subscribe(modelPage => {
+      this.modelInfo.set(modelPage);
+    }, error => console.error(error));
+  }
 }

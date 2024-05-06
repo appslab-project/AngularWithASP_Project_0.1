@@ -36,6 +36,12 @@ export class ModelServiceService {
     queryParams = queryParams.append("id", id);
     return this.http.get<Modeldto[]>(this.baseUrl + '/models/getMyModel', { params: queryParams })
   }
+  deleteThisModel(id: number, ownerId: string) {
+    let queryParams = new HttpParams()
+      .set("id", id)
+      .set("ownerId", ownerId);
+    return this.http.put<Modeldto[]>(this.baseUrl + '/models/deleteModel', null, { params: queryParams });
+  }
 }
 
 export interface Modeldto {
