@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, inject, Output, EventEmitter } from '@angular/core';
+import { Component, signal, inject, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ModelServiceService, Modeldto } from '../Service/model-service.service';
@@ -34,7 +34,7 @@ import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/ht
   templateUrl: './model-create.component.html',
   styleUrl: './model-create.component.css'
 })
-export class ModelCreateComponent {
+export class ModelCreateComponent implements OnInit {
 
   public modelCreateForm: FormGroup;
   modelInfo = signal<Modeldto[]>(undefined);
@@ -48,6 +48,12 @@ export class ModelCreateComponent {
 
   public message: string;
   public progress: number;
+
+  public messageFile: string;
+  public progressFile: number;
+
+
+  //emitter uploadu
 
   @Output() public onUploadFinished = new EventEmitter();
 
@@ -72,25 +78,89 @@ export class ModelCreateComponent {
     }, error => console.error(error));
   }
 
-  uploadFile = (files) => {
-    if (files.length === 0) {
-      return;
-    }
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
+  ngOnInit(): void {
 
-    this.http.post('https://localhost:5001/api/upload', formData, { reportProgress: true, observe: 'events' })
-      .subscribe({
-        next: (event) => {
-          if (event.type === HttpEventType.UploadProgress)
-            this.progress = Math.round(100 * event.loaded / event.total);
-          else if (event.type === HttpEventType.Response) {
-            this.message = 'Upload success.';
-            this.onUploadFinished.emit(event.body);
-          }
-        },
-        error: (err: HttpErrorResponse) => console.log(err)
-      });
   }
+
+  // Nefunkcny kód ale radsej ho tu zatial nechávam
+
+
+  //uploadFile = (files) => {
+  //  if (files.length === 0) {
+  //    return;
+  //  }
+  //  let fileToUpload = <File>files[0];
+  //  const formData = new FormData();
+  //  formData.append('file', fileToUpload, fileToUpload.name);
+
+  //  this.http.post('https://localhost:7186/Models/upladFile', formData, { reportProgress: true, observe: 'events' })
+  //    .subscribe({
+  //      next: (event) => {
+  //        if (event.type === HttpEventType.UploadProgress)
+  //          this.progress = Math.round(100 * event.loaded / event.total);
+  //        else if (event.type === HttpEventType.Response) {
+  //          this.message = 'Upload success.';
+  //          this.onUploadFinished.emit(event.body);
+  //        }
+  //      },
+  //      error: (err: HttpErrorResponse) => console.log(err)
+  //    });
+  //}
+
+
+
+
+
+  //funkcny kod
+
+  onChangeImage(event: any) {
+    debugger;
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      if (file.type == 'image/jpg' || file.type == 'image/jpeg' || file.type == 'image/png') {
+        const formData = new FormData();
+        formData.append('file', file)
+        this.http.post('https://localhost:7186/Models/uploadImage', formData, { reportProgress: true, observe: 'events' }).subscribe({
+          next: (event) => {
+            if (event.type === HttpEventType.UploadProgress)
+              this.progress = Math.round(100 * event.loaded / event.total);
+            else if (event.type === HttpEventType.Response) {
+              this.message = 'Upload success.';
+              this.onUploadFinished.emit(event.body);
+            }
+          },
+          error: (err: HttpErrorResponse) => console.log(err)
+        });
+      }
+      else {
+        alert("Invalid file format. Please insert valid file format. (.png, .jpg, .jpeg)")
+      }
+    }
+
+  }
+
+
+  onChangeFile(event: any) {
+    debugger;
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file)
+        this.http.post('https://localhost:7186/Models/uploadFile', formData, { reportProgress: true, observe: 'events' }).subscribe({
+          next: (event) => {
+            if (event.type === HttpEventType.UploadProgress)
+              this.progressFile = Math.round(100 * event.loaded / event.total);
+            else if (event.type === HttpEventType.Response) {
+              this.messageFile = 'Upload success.';
+              this.onUploadFinished.emit(event.body);
+            }
+          },
+          error: (err: HttpErrorResponse) => console.log(err)
+        });
+    }
+
+  }
+
 }
+
+

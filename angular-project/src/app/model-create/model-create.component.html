@@ -1,5 +1,5 @@
-<!--<body>
-  <h1>Create a Model</h1>
+<body>
+  <h1>create a model</h1>
   <form [formGroup]="modelCreateForm" (ngSubmit)="onSubmit()">
 
     <div class="host">
@@ -22,18 +22,96 @@
           <mat-option value="Another">Another</mat-option>
         </mat-select>
       </mat-form-field>
+      <div>
+        <!--image upload-->
+        <div>
+          <input type="file" (change)="onChangeImage($event)" accept=".jpg, .jpeg, .png">
+        </div>
+        <div class="col-md-4">
+          <span class="upload" *ngIf="progress > 0">
+            {{progress}}%
+          </span>
+          <span class="upload" *ngIf="message">
+            {{message}}
+          </span>
+          </div>
+          <!---->
+          <!--file upload-->
+          <div>
+            <input type="file" (change)="onChangeFile($event)" accept=".3mf">
+          </div>
+          <div class="col-md-4">
+            <span class="upload" *ngIf="progress > 0">
+              {{progressFile}}%
+            </span>
+            <span class="upload" *ngIf="message">
+              {{messageFile}}
+            </span>
+            </div>
+            <!---->
+          </div>
 
-      <button mat-button disabledInteractive [disabled]="modelCreateForm.invalid" matTooltip="You need to fill out the form!" >Submmit</button>
+          <button mat-button disabledInteractive [disabled]="modelCreateForm.invalid" matTooltip="You need to fill out the form!">
+            Submmit
+          </button>
 
+        </div>
+
+</form>
+</body>
+
+
+
+
+<!--<body>
+  <div class="row" style="margin-bottom:15px;">
+    <div class="col-md-3">
+      <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+      <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
     </div>
-
-  </form>
+    <div class="col-md-4">
+      <span class="upload" *ngIf="progress > 0">
+        {{progress}}%
+      </span>
+      <span class="upload" *ngIf="message">
+        {{message}}
+      </span>
+    </div>
+  </div>
 </body>-->
 
-<div class="row" style="margin-bottom:15px;">
+
+
+<!--<div class="row" style="margin-bottom:15px;">
   <div class="col-md-3">
     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
     <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+  </div>-->
+  <!--<div class="col-md-4">
+    <span class="upload" *ngIf="progress > 0">
+      {{progress}}%
+    </span>
+    <span class="upload" *ngIf="message">
+      {{message}}
+    </span>
+  </div>-->
+
+
+
+<!--<body>
+  <div>
+    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+    <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+  </div>
+</body>-->
+
+
+
+
+<!--funkčný file upload button-->
+<!--<body>
+  <div>
+    <input type="file" (change)="onChangeFile($event)">
   </div>
   <div class="col-md-4">
     <span class="upload" *ngIf="progress > 0">
@@ -43,4 +121,4 @@
       {{message}}
     </span>
   </div>
-</div>
+</body>-->
