@@ -20,7 +20,7 @@
         <mat-icon>favorite</mat-icon>
       </button>
       <p class="desc">{{models.likes}}</p>
-      <button class="Details" mat-button [routerLink]="['/modelDetails', models.id]">Details</button>
+      <button class="Details" mat-button [routerLink]="['/modelEdit', models.id]">Details</button>
       <a class="Details" mat-raised-button (click)="deleteModel(models.id)">Delete Model</a>
 
     </mat-card-actions>

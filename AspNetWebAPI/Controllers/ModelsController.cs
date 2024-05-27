@@ -101,6 +101,16 @@ namespace AspNetCoreAPI.Controllers
                     {
                         file.CopyTo(stream);
                     }
+
+                    //IEnumerable<ModelInformations> models = _context.ModelInformations;
+                    //var cesta = new ModelInformations
+                    //{
+
+                    //    ImagePath = dbPath,
+
+                    //};
+                    //_context.Add(cesta);
+                    //_context.SaveChanges();
                     return Ok(new { dbPath });
                 }
                 else

@@ -15,6 +15,7 @@ import { ModelsComponent } from './app/models/models.component';
 import { ModelsDetailsComponent } from './app/models-details/models-details.component';
 import { ModelCreateComponent } from './app/model-create/model-create.component';
 import { MyModelsComponent } from './app/my-models/my-models.component';
+import { ModelEditComponent } from './app/model-edit/model-edit.component';
 
 export function getBaseUrl() {
   return 'https://localhost:7186/api';
@@ -48,7 +49,7 @@ bootstrapApplication(AppComponent, {
         { path: 'modelDetails/:modelId', component: ModelsDetailsComponent },
         { path: 'modelsCreate', component: ModelCreateComponent },
         { path: 'myModels', component: MyModelsComponent },
-
+        { path: 'modelEdit/:modelId', component: ModelEditComponent },
       ])
     ]
 })

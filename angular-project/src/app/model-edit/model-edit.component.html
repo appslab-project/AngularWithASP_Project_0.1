@@ -1,0 +1,53 @@
+<body>
+  <div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{modelDetailInfo().name}}</mat-card-title>
+        <mat-card-subtitle>{{modelDetailInfo().ownerId}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="\assets\images\images.jpg">
+      <mat-card-content>
+        <h3 class="desc">{{modelDetailInfo().category}}</h3>
+        <mat-card-subtitle>{{modelDetailInfo().description}}</mat-card-subtitle>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div>
+    <h1>Upload an image</h1>
+    <div>
+      <!--image upload-->
+      <div>
+        <input type="file" (change)="onChangeImage($event)" accept=".jpg, .jpeg, .png">
+      </div>
+      <div class="col-md-4">
+        <span class="upload" *ngIf="progress > 0">
+          {{progress}}%
+        </span>
+        <span class="upload" *ngIf="message">
+          {{message}}
+        </span>
+      </div>
+      <!---->
+      <h1>Upload a model file</h1>
+      <!--file upload-->
+      <div>
+        <input type="file" (change)="onChangeFile($event)" accept=".3mf">
+      </div>
+      <div class="col-md-4">
+        <span class="upload" *ngIf="progress > 0">
+          {{progressFile}}%
+        </span>
+        <span class="upload" *ngIf="message">
+          {{messageFile}}
+        </span>
+      </div>
+      <!---->
+    </div>
+
+        <!--<button mat-button disabledInteractive [disabled]="modelCreateForm.invalid" matTooltip="You need to fill out the form!">
+          Submmit
+        </button>-->
+
+      </div>
+</body>
