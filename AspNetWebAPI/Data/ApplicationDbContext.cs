@@ -13,6 +13,8 @@ namespace AspNetCoreAPI.Data
         }
 
         public DbSet<ModelInformations> ModelInformations { get; set; }
+        public DbSet<ModelImages> ModelImages { get; set; }
+
 
     }
 }

@@ -52,12 +52,12 @@ export class ModelEditComponent {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       if (file.type == 'image/jpg' || file.type == 'image/jpeg' || file.type == 'image/png') {
-        let queryParams = new HttpParams()
-          .set("modelId", this.modelIdFromRoute);
+       
         const formData = new FormData();
-        formData.append('file', file)
+        formData.append('file', file);
+        formData.append('modelId', this.modelIdFromRoute.toString());
 
-        this.http.post('https://localhost:7186/Models/uploadImage', { formData, queryParams}, { reportProgress: true, observe: 'events' }).subscribe({
+        this.http.post('https://localhost:7186/Models/uploadImage',  formData , { reportProgress: true, observe: 'events' }).subscribe({
           next: (event) => {
             if (event.type === HttpEventType.UploadProgress)
               this.progress = Math.round(100 * event.loaded / event.total);

@@ -85,14 +85,14 @@ namespace AspNetCoreAPI.Controllers
 
         [HttpPost ("uploadImage")] 
         [DisableRequestSizeLimit]
-        public IActionResult Upload(int modelId)
+        public ActionResult Upload()
         {
             try
             {
                 var file = Request.Form.Files[0];
+                int modelId = Int32.Parse(Request.Form["modelId"]); 
                 var folderName = Path.Combine("Resources", "Images");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-                Console.WriteLine(modelId);
                 if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
@@ -103,15 +103,16 @@ namespace AspNetCoreAPI.Controllers
                         file.CopyTo(stream);
                     }
 
-                    //IEnumerable<ModelInformations> models = _context.ModelInformations;
-                    //var cesta = new ModelInformations
-                    //{
+                    IEnumerable<ModelImages> models = _context.ModelImages;
+                    var cesta = new ModelImages
+                    {
 
-                    //    ImagePath = dbPath,
+                        ImagePath = dbPath,
+                        ModelId = modelId,
 
-                    //};
-                    //_context.Add(cesta);
-                    //_context.SaveChanges();
+                    };
+                    _context.Add(cesta);
+                    _context.SaveChanges();
                     return Ok(new { dbPath });
                 }
                 else
