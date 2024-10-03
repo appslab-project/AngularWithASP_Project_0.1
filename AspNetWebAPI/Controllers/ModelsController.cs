@@ -135,9 +135,9 @@ namespace AspNetCoreAPI.Controllers
             try
             {
                 var file = Request.Form.Files[0];
-                //int modelId = Int32.Parse(Request.Form["modelId"]);
+                int modelId = Int32.Parse(Request.Form["modelId"]);
                 var folderName = Path.Combine("Resources", "Models");
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                var pathToSave =  Path.Combine(Directory.GetCurrentDirectory(), folderName);
                 if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
@@ -148,7 +148,7 @@ namespace AspNetCoreAPI.Controllers
                         file.CopyTo(stream);
                     }
                     //IEnumerable<ModelInformations> models = _context.ModelInformations.Find(modelId);
-                    /*ModelInformations modelDetails = _context.ModelInformations.Find(modelId);
+                    ModelInformations modelDetails = _context.ModelInformations.Find(modelId);
 
                     modelDetails = new ModelInformations
                     {
@@ -156,7 +156,7 @@ namespace AspNetCoreAPI.Controllers
                          FilePath = dbPath,
                     };
                     _context.Add(modelDetails);
-                    _context.SaveChanges();*/
+                    _context.SaveChanges();
                     return Ok(new { dbPath });
                 }
                 else

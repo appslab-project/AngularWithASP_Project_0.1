@@ -82,7 +82,7 @@ export class ModelEditComponent {
       const file = event.target.files[0];
       const formData = new FormData();
       formData.append('file', file);
-    //  formData.append('modelId', this.modelIdFromRoute.toString());
+      formData.append('modelId', this.modelIdFromRoute.toString());
 
       this.http.post('https://localhost:7186/Models/uploadFile', formData, { reportProgress: true, observe: 'events' }).subscribe({
         next: (event) => {
