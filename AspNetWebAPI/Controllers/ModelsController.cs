@@ -29,6 +29,8 @@ namespace AspNetCoreAPI.Controllers
         public IEnumerable<Modeldto> GetModels()
         {
             IEnumerable<ModelInformations> models = _context.ModelInformations;
+            IEnumerable<Models.ModelImages> paths = _context.ModelImages;
+            _modelBeService.GetImagesFromPath(models, paths);
             return _modelBeService.MapModelToDto(models);
         }
         [HttpGet("getMyModel")]
@@ -130,7 +132,7 @@ namespace AspNetCoreAPI.Controllers
 
         [HttpPost("uploadFile")]
         [DisableRequestSizeLimit]
-        public IActionResult UploadFile()
+        public ActionResult UploadFile()
         {
             try
             {

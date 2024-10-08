@@ -11,5 +11,6 @@
         public int Likes { get; set; }
 
         public string OwnerId { get; set; }
+        public FormFile Obrazok { get ; set; }
     }
 }

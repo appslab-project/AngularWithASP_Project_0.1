@@ -1,6 +1,7 @@
 ﻿using AspNetCoreAPI.Authentication.dto;
 using AspNetCoreAPI.Data;
 using AspNetCoreAPI.Models;
+using Microsoft.AspNetCore.Server.IIS.Core;
 
 namespace AspNetCoreAPI.ServiceBE
 {
@@ -8,6 +9,7 @@ namespace AspNetCoreAPI.ServiceBE
     {
         public IEnumerable<Modeldto> MapModelToDto(IEnumerable<ModelInformations> models);
         public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails);
+        public FormFile GetImagesFromPath(IEnumerable<ModelInformations> models, IEnumerable<ModelImages> paths);
     }
     public class BEService : IBEService
     {
@@ -48,6 +50,12 @@ namespace AspNetCoreAPI.ServiceBE
                 OwnerId = modelDetails.OwnerId,
                 Description = modelDetails.Description
             };
+        }
+        public FormFile GetImagesFromPath(IEnumerable<ModelInformations> models, IEnumerable<ModelImages> paths)
+        {
+            int id = models.Select(models => models.Id).FirstOrDefault();
+            IEnumerable<ModelImages> path = _context.ModelImages.Where(path => path.ModelId == id);
+            return null;
         }
     }
 }
