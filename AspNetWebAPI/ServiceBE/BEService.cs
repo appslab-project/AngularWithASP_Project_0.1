@@ -8,7 +8,7 @@ namespace AspNetCoreAPI.ServiceBE
 {
     public interface IBEService
     {
-        public IEnumerable<Modeldto> MapModelToDto(IEnumerable<ModelInformations> models);
+        public IEnumerable<Modeldto> MapModelToDto(IEnumerable<ModelInformations> models, string path);
         public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails);
         public string GetImagesFromPath(IEnumerable<ModelInformations> models, IEnumerable<ModelImages> paths);
     }
@@ -24,7 +24,7 @@ namespace AspNetCoreAPI.ServiceBE
         public ApplicationDbContext Context => _context;
 
 
-        public IEnumerable<Modeldto> MapModelToDto(IEnumerable<ModelInformations> models)
+        public IEnumerable<Modeldto> MapModelToDto(IEnumerable<ModelInformations> models, string path)
         {
 
             return models.Select(models => new Modeldto
@@ -35,7 +35,8 @@ namespace AspNetCoreAPI.ServiceBE
                 Category = models.Category,
                 Likes = models.Likes,
                 OwnerId = models.OwnerId,
-            });
+                PicturePath = path,
+            }) ;
         }
 
         public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails)
@@ -55,7 +56,7 @@ namespace AspNetCoreAPI.ServiceBE
         public string GetImagesFromPath(IEnumerable<ModelInformations> models, IEnumerable<ModelImages> paths)
         {
             int id = models.Select(models => models.Id).FirstOrDefault();
-            var path = _context.ModelImages.Where(path => path.ModelId == id).FirstOrDefault();
+            var path = _context.ModelImages.Where(paths => paths.ModelId == id).FirstOrDefault();
             //var getFullPath = Path.Combine(Directory.GetCurrentDirectory(), path.ImagePath.ToString()); Assembless full path (but for now unused)
             //var getFullPath = ("C:\\Users\\andre\\source\\repos\\AngularWithAsp_Project_3DLibrary\\AngularWithASP_Project_0.1\\AspNetWebAPI\\Resources\\Images\\336735819_197629953081725_5635585821555488916_n.jpg");
             var directoryPath = ("UploadedImages");

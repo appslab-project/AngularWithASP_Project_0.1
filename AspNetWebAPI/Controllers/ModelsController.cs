@@ -30,17 +30,18 @@ namespace AspNetCoreAPI.Controllers
         {
             IEnumerable<ModelInformations> models = _context.ModelInformations;
             IEnumerable<Models.ModelImages> paths = _context.ModelImages;
-            _modelBeService.GetImagesFromPath(models, paths);
-            return _modelBeService.MapModelToDto(models);
+            string path = _modelBeService.GetImagesFromPath(models, paths);
+            return _modelBeService.MapModelToDto(models, path);
         }
         [HttpGet("getMyModel")]
         public IEnumerable<Modeldto> GetMyModels(string id)
         {
         
             IEnumerable<ModelInformations> models = _context.ModelInformations.Where(model => model.OwnerId == id);
+            IEnumerable<Models.ModelImages> paths = _context.ModelImages;
+            string path = _modelBeService.GetImagesFromPath(models, paths);
 
-
-            return _modelBeService.MapModelToDto(models);
+            return _modelBeService.MapModelToDto(models, path);
         }
 
         [HttpGet("getModelDetails")]
@@ -55,6 +56,8 @@ namespace AspNetCoreAPI.Controllers
         public IEnumerable<Modeldto> CreateModel(string modelName, string category, string description, string ownerId) 
         {
             IEnumerable<ModelInformations> models = _context.ModelInformations;
+            IEnumerable<Models.ModelImages> paths = _context.ModelImages;
+            string path = _modelBeService.GetImagesFromPath(models, paths);
             var info = new ModelInformations
             {
 
@@ -68,14 +71,15 @@ namespace AspNetCoreAPI.Controllers
             _context.Add(info);
             _context.SaveChanges();
 
-            return _modelBeService.MapModelToDto(models);
+            return _modelBeService.MapModelToDto(models, path);
         }
         [HttpPut("deleteModel")]
         public IEnumerable<Modeldto> DeleteModel(int id, string ownerId)
         {
 
             IEnumerable<ModelInformations> models = _context.ModelInformations.Where(xmodel => xmodel.OwnerId == ownerId); ;
-
+            IEnumerable<Models.ModelImages> paths = _context.ModelImages;
+            string path = _modelBeService.GetImagesFromPath(models, paths);
             var model = _context.ModelInformations.Find(id);
             if (model == null)
             {
@@ -83,7 +87,7 @@ namespace AspNetCoreAPI.Controllers
             }
             _context.Remove(model);
             _context.SaveChanges();
-            return _modelBeService.MapModelToDto(models);
+            return _modelBeService.MapModelToDto(models, path);
         }
 
         [HttpPost ("uploadImage")] 
