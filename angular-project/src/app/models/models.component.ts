@@ -47,6 +47,7 @@ export class ModelsComponent {
   modelName: string;
   category: string;
   description: string;
+  picturePath: string;
   constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder) {
 
     this.modelCreateForm = this.formBuilder.group({
