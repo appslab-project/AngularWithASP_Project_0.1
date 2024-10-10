@@ -57,16 +57,21 @@ namespace AspNetCoreAPI.ServiceBE
         }
         public string GetImagesFromPath(int modelId, IEnumerable<ModelImages> paths)
         {
-           // int id = models.Select(models => models.Id).FirstOrDefault();
-            IEnumerable<ModelImages> path = _context.ModelImages.Where(paths => paths.ModelId == modelId);
-            string getDisplayPath = "";
+            if (paths != null) {
+                IEnumerable<ModelImages> path = _context.ModelImages.Where(paths => paths.ModelId == modelId);
+                string getDisplayPath = "";
                 foreach (ModelImages image in path)
-            {
-                string notFinishedPath = image.ImagePath.ToString();
-                var directoryPath = ("UploadedImages");
-                getDisplayPath = Path.Combine(directoryPath, notFinishedPath.Replace("Resources\\Images\\", ""));
+                {
+                    string notFinishedPath = image.ImagePath.ToString();
+                    var directoryPath = ("UploadedImages");
+                    getDisplayPath = Path.Combine(directoryPath, notFinishedPath.Replace("Resources\\Images\\", ""));
+                }
+                return getDisplayPath;
             }
-            return getDisplayPath;
+            else
+            {
+                return null;
+            }
 
 
             //var getFullPath = Path.Combine(Directory.GetCurrentDirectory(), path.ImagePath.ToString()); Assembless full path (but for now unused)
