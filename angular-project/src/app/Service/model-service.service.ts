@@ -59,6 +59,7 @@ export interface ModelDetailsdto {
   likes: number;
   ownerId: string;
   description: string;
+  picturePath: string;
 }
 
 export interface ModelCreateDto {

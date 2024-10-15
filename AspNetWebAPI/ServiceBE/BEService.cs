@@ -10,7 +10,7 @@ namespace AspNetCoreAPI.ServiceBE
     public interface IBEService
     {
         public IEnumerable<Modeldto> MapModelToDto(IEnumerable<ModelInformations> models, IEnumerable<ModelImages> paths);
-        public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails);
+        public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails, IEnumerable<ModelImages> paths);
         public string GetImagesFromPath(int models, IEnumerable<ModelImages> paths);
     }
     public class BEService : IBEService
@@ -29,7 +29,7 @@ namespace AspNetCoreAPI.ServiceBE
         {
 
             return models.Select(models => new Modeldto
-            {
+            { 
 
                 Id = models.Id,
                 Name = models.Name,
@@ -41,7 +41,7 @@ namespace AspNetCoreAPI.ServiceBE
             }) ;
         }
 
-        public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails)
+        public ModelDetailsdto MapModelDetailsToDto(ModelInformations modelDetails, IEnumerable<ModelImages> paths)
         {
 
             return  new ModelDetailsdto
@@ -52,7 +52,8 @@ namespace AspNetCoreAPI.ServiceBE
                 Category = modelDetails.Category,
                 Likes = modelDetails.Likes,
                 OwnerId = modelDetails.OwnerId,
-                Description = modelDetails.Description
+                Description = modelDetails.Description,
+                PicturePath = this.GetImagesFromPath(modelDetails.Id, paths)
             };
         }
         public string GetImagesFromPath(int modelId, IEnumerable<ModelImages> paths)
