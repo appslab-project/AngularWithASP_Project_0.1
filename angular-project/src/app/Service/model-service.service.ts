@@ -42,6 +42,10 @@ export class ModelServiceService {
       .set("ownerId", ownerId);
     return this.http.put<Modeldto[]>(this.baseUrl + '/models/deleteModel', null, { params: queryParams });
   }
+  uploadModelImage(formData: FormData) {
+
+    return this.http.post( this.baseUrl + '/models/uploadImage', formData, { reportProgress: true, observe: 'events' })
+  }
 }
 
 export interface Modeldto {

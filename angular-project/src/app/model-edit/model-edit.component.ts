@@ -57,7 +57,7 @@ export class ModelEditComponent {
         formData.append('file', file);
         formData.append('modelId', this.modelIdFromRoute.toString());
 
-        this.http.post('https://localhost:7186/Models/uploadImage',  formData , { reportProgress: true, observe: 'events' }).subscribe({
+        this.model_service.uploadModelImage(formData).subscribe({
           next: (event) => {
             if (event.type === HttpEventType.UploadProgress)
               this.progress = Math.round(100 * event.loaded / event.total);
