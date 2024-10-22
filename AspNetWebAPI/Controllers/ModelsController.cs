@@ -150,14 +150,14 @@ namespace AspNetCoreAPI.Controllers
                         file.CopyTo(stream);
                     }
                     //IEnumerable<ModelInformations> models = _context.ModelInformations.Find(modelId);
-                    ModelInformations modelDetails = _context.ModelInformations.Find(modelId);
-
-                    modelDetails = new ModelInformations
+                    var cesta = new Models.Model3DModels
                     {
 
-                         FilePath = dbPath,
+                        ModelPath = dbPath,
+                        ModelId = modelId,
+
                     };
-                    _context.Add(modelDetails);
+                    _context.Add(cesta);
                     _context.SaveChanges();
                     return Ok(new { dbPath });
                 }
