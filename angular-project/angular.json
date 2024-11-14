@@ -28,6 +28,11 @@
                 "input": "../AspNetWebAPI/Resources/Images",
                 "output": "UploadedImages/"
               }
+              {
+                "glob": "**.*",
+                "input": "../AspNetWebAPI/Resources/Models",
+                "output": "UploadedModels/"
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
