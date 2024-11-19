@@ -21,25 +21,22 @@ export class ModelServiceService {
     queryParams = queryParams.append("id", id);
     return this.http.get<ModelDetailsdto>(this.baseUrl + '/models/getModelDetails', { params: queryParams });
   }
-  createModel(modelName: string, category: string, description: string,  ownerId: string) {
+  createModel(modelName: string, category: string, description: string) {
     let queryParams = new HttpParams()
       .set("modelName", modelName)
       .set("category", category)
       .set("description", description)
-      .set("ownerId", ownerId);
 
     return this.http.put<Modeldto[]>(this.baseUrl + '/models/createModel', null, { params: queryParams });
 
   }
-  getMyModels(id:string) {
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("id", id);
-    return this.http.get<Modeldto[]>(this.baseUrl + '/models/getMyModel', { params: queryParams })
+  getMyModels() {
+
+    return this.http.get<Modeldto[]>(this.baseUrl + '/models/getMyModel')
   }
-  deleteThisModel(id: number, ownerId: string) {
+  deleteThisModel(id: number) {
     let queryParams = new HttpParams()
       .set("id", id)
-      .set("ownerId", ownerId);
     return this.http.put<Modeldto[]>(this.baseUrl + '/models/deleteModel', null, { params: queryParams });
   }
   uploadModelImage(formData: FormData) {

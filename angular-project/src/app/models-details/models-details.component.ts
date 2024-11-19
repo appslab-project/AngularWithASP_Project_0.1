@@ -28,7 +28,6 @@ export class ModelsDetailsComponent {
   }
 
   ngOnInit() {
-    // Get guild Id
     const routeParams = this.route.snapshot.paramMap;
     this.modelIdFromRoute = Number(routeParams.get('modelId'));
 

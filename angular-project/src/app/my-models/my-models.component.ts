@@ -37,7 +37,6 @@ import { AuthenticationService } from '../api-authorization/authentication.servi
 })
 export class MyModelsComponent {
   modelInfo = signal<Modeldto[]>(undefined);
-  private authService: AuthenticationService = inject(AuthenticationService);
 
   constructor(private model_service: ModelServiceService ) {
 
@@ -45,13 +44,13 @@ export class MyModelsComponent {
 
   ngOnInit() {
 
-    this.model_service.getMyModels(this.authService.getCurrentId()).subscribe(modelPage => {
+    this.model_service.getMyModels().subscribe(modelPage => {
       this.modelInfo.set(modelPage);
     }, error => console.error(error));
   }
 
   deleteModel(id: number) {
-    this.model_service.deleteThisModel(id, this.authService.getCurrentId() ).subscribe(modelPage => {
+    this.model_service.deleteThisModel(id).subscribe(modelPage => {
       this.modelInfo.set(modelPage);
     }, error => console.error(error));
   }

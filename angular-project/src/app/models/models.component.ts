@@ -42,8 +42,7 @@ export class ModelsComponent {
 
   public modelCreateForm: FormGroup;
   modelInfo = signal<Modeldto[]>(undefined);
-  private authService: AuthenticationService = inject(AuthenticationService);
-  ownerId: string;
+ 
   modelName: string;
   category: string;
   description: string;
@@ -67,10 +66,9 @@ export class ModelsComponent {
     this.modelName = this.modelCreateForm.value.modelName;
     this.category = this.modelCreateForm.value.category;
     this.description = this.modelCreateForm.value.description;
-    this.ownerId = this.authService.getCurrentId();
-    console.log(this.ownerId);
+ 
     // TODO: Use EventEmitter with form value
-    this.model_service.createModel(this.modelName, this.category, this.description, this.ownerId).subscribe(modelPage => {
+    this.model_service.createModel(this.modelName, this.category, this.description).subscribe(modelPage => {
       this.modelInfo.set(modelPage)
 
     }, error => console.error(error));

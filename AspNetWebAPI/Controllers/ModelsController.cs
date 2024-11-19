@@ -42,10 +42,10 @@ namespace AspNetCoreAPI.Controllers
             //string test = GetCurrentUser().Id;
         }
         [HttpGet("getMyModel")]
-        public IEnumerable<Modeldto> GetMyModels(string id)
+        public IEnumerable<Modeldto> GetMyModels()
         {
         
-            IEnumerable<ModelInformations> models = _context.ModelInformations.Where(model => model.OwnerId == id);
+            IEnumerable<ModelInformations> models = _context.ModelInformations.Where(model => model.OwnerId == GetCurrentUser().Id);
             IEnumerable<Models.ModelImages> paths = _context.ModelImages;
             return _modelBeService.MapModelToDto(models, paths);
         }
@@ -60,7 +60,7 @@ namespace AspNetCoreAPI.Controllers
         }
         [HttpPut("createModel")]
 
-        public IEnumerable<Modeldto> CreateModel(string modelName, string category, string description, string ownerId) 
+        public IEnumerable<Modeldto> CreateModel(string modelName, string category, string description) 
         {
             IEnumerable<ModelInformations> models = _context.ModelInformations;
             IEnumerable<Models.ModelImages> paths = _context.ModelImages;
@@ -70,7 +70,7 @@ namespace AspNetCoreAPI.Controllers
                 Name = modelName,
                 Category = category,
                 Description = description,
-                OwnerId = ownerId,
+                OwnerId = GetCurrentUser().Id,
 
 
             };
@@ -80,10 +80,10 @@ namespace AspNetCoreAPI.Controllers
             return _modelBeService.MapModelToDto(models, paths);
         }
         [HttpPut("deleteModel")]
-        public IEnumerable<Modeldto> DeleteModel(int id, string ownerId)
+        public IEnumerable<Modeldto> DeleteModel(int id)
         {
 
-            IEnumerable<ModelInformations> models = _context.ModelInformations.Where(xmodel => xmodel.OwnerId == ownerId); ;
+            IEnumerable<ModelInformations> models = _context.ModelInformations.Where(xmodel => xmodel.OwnerId == GetCurrentUser().Id); ;
             IEnumerable<Models.ModelImages> paths = _context.ModelImages;
             var model = _context.ModelInformations.Find(id);
             if (model == null)
