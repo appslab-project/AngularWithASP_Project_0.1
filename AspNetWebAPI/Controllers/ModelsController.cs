@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 
 namespace AspNetCoreAPI.Controllers
 {
@@ -25,12 +26,20 @@ namespace AspNetCoreAPI.Controllers
 
         }
 
+        protected User? GetCurrentUser()
+        {
+            var userName = User.FindFirstValue(ClaimTypes.Name);
+
+            return _context.Users.SingleOrDefault(user => user.UserName == userName);
+        }
+
         [HttpGet("getModel")]
         public IEnumerable<Modeldto> GetModels()
         {
             IEnumerable<ModelInformations> models = _context.ModelInformations;
             IEnumerable<Models.ModelImages> paths = _context.ModelImages;
             return _modelBeService.MapModelToDto(models, paths);
+            //string test = GetCurrentUser().Id;
         }
         [HttpGet("getMyModel")]
         public IEnumerable<Modeldto> GetMyModels(string id)
