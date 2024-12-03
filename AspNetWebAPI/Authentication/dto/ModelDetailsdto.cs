@@ -14,6 +14,7 @@
 
         public string Description { get; set; }
         public string PicturePath {  get; set; }
+        public string ModelPath { get; set;}
 
     }
 }

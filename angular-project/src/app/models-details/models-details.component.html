@@ -9,8 +9,11 @@
       <img mat-card-image src={{modelDetailInfo().picturePath}}>
       <mat-card-content>
         <h3 class="desc">{{modelDetailInfo().category}}</h3>
-        <mat-card-subtitle>{{modelDetailInfo().description}}</mat-card-subtitle>
+        <mat-card-subtitle>{{modelDetailInfo().description}},</mat-card-subtitle>
       </mat-card-content>
     </mat-card>
+  </div>
+  <div>
+    <a href={{modelDetailInfo().modelPath}} download class="download-btn">Stiahnuť</a>
   </div>
 </body>

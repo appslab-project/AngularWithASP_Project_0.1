@@ -55,7 +55,8 @@ namespace AspNetCoreAPI.Controllers
         {
             var modelDetails = _context.ModelInformations.Find(id);
             IEnumerable<Models.ModelImages> paths = _context.ModelImages;
-            var info = _modelBeService.MapModelDetailsToDto(modelDetails, paths);
+            IEnumerable<Models.Model3DModels> modelPaths = _context.Model3DModels;
+            var info = _modelBeService.MapModelDetailsToDto(modelDetails, paths, modelPaths);
             return info;
         }
         [HttpPut("createModel")]

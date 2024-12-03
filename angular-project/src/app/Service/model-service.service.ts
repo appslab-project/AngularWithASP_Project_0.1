@@ -61,6 +61,7 @@ export interface ModelDetailsdto {
   ownerId: string;
   description: string;
   picturePath: string;
+  modelPath: string;
 }
 
 export interface ModelCreateDto {
