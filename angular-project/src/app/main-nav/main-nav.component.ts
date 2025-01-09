@@ -7,17 +7,15 @@ import { NgIf } from '@angular/common';
 
 
 @Component({
-  selector: 'app-main-nav',
-  standalone: true,
-  imports: [
-    RouterLink,
-    MatToolbar,
-    MatButton,
-    NgIf,
-
-  ],
-  templateUrl: './main-nav.component.html',
-  styleUrl: './main-nav.component.css'
+    selector: 'app-main-nav',
+    imports: [
+        RouterLink,
+        MatToolbar,
+        MatButton,
+        NgIf,
+    ],
+    templateUrl: './main-nav.component.html',
+    styleUrl: './main-nav.component.css'
 })
 export class MainNavComponent {
   authService = inject(AuthenticationService);

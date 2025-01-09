@@ -15,24 +15,23 @@ import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/ht
 
 
 @Component({
-  selector: 'app-model-create',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatToolbar,
-    MatButton,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatTooltip,
-    RouterModule,
-  ],
-  templateUrl: './model-create.component.html',
-  styleUrl: './model-create.component.css'
+    selector: 'app-model-create',
+    imports: [
+        CommonModule,
+        MatToolbar,
+        MatButton,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatTooltip,
+        RouterModule,
+    ],
+    templateUrl: './model-create.component.html',
+    styleUrl: './model-create.component.css'
 })
 export class ModelCreateComponent implements OnInit {
 

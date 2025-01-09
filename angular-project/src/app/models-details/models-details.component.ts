@@ -4,21 +4,21 @@ import { ModelServiceService, ModelDetailsdto } from '../Service/model-service.s
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { StlModelViewerModule } from 'angular-stl-model-viewer';
 
 @Injectable({
   providedIn: 'root'
 })
 @Component({
-  selector: 'app-models-details',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule
-    
-  ],
-  templateUrl: './models-details.component.html',
-  styleUrl: './models-details.component.css'
+    selector: 'app-models-details',
+    imports: [
+      CommonModule,
+      MatCardModule,
+      MatButtonModule,
+      StlModelViewerModule
+    ],
+    templateUrl: './models-details.component.html',
+    styleUrl: './models-details.component.css'
 })
 export class ModelsDetailsComponent {
   modelIdFromRoute: number;

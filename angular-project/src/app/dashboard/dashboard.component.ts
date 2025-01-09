@@ -6,27 +6,26 @@ import { MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderCellDef, Mat
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [
-    NgIf,
-    AsyncPipe,
-    MatList,
-    MatListItem,
-    NgForOf,
-    MatTable,
-    MatHeaderCell,
-    MatCell,
-    MatCellDef,
-    MatHeaderCellDef,
-    MatColumnDef,
-    MatRowDef,
-    MatHeaderRowDef,
-    MatHeaderRow,
-    MatRow
-  ],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+    selector: 'app-dashboard',
+    imports: [
+        NgIf,
+        AsyncPipe,
+        MatList,
+        MatListItem,
+        NgForOf,
+        MatTable,
+        MatHeaderCell,
+        MatCell,
+        MatCellDef,
+        MatHeaderCellDef,
+        MatColumnDef,
+        MatRowDef,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRow
+    ],
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
   private testService = inject(TestService);

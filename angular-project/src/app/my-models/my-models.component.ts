@@ -15,25 +15,24 @@ import { MatCardModule } from '@angular/material/card';
 import { AuthenticationService } from '../api-authorization/authentication.service';
 
 @Component({
-  selector: 'app-my-models',
-  standalone: true,
-  imports: [CommonModule,
-    MatToolbar,
-    MatButton,
-    RouterLink,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatTooltip,
-    MatCardModule,
-  ],
-  templateUrl: './my-models.component.html',
-  styleUrl: './my-models.component.css'
+    selector: 'app-my-models',
+    imports: [CommonModule,
+        MatToolbar,
+        MatButton,
+        RouterLink,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatIconModule,
+        MatTooltip,
+        MatCardModule,
+    ],
+    templateUrl: './my-models.component.html',
+    styleUrl: './my-models.component.css'
 })
 export class MyModelsComponent {
   modelInfo = signal<Modeldto[]>(undefined);

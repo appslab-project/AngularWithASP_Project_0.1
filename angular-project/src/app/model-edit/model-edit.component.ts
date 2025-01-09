@@ -7,16 +7,14 @@ import { HttpClient, HttpErrorResponse, HttpEventType, HttpParams } from '@angul
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-model-edit',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatCardModule,
-    FormsModule
-
-  ],
-  templateUrl: './model-edit.component.html',
-  styleUrl: './model-edit.component.css'
+    selector: 'app-model-edit',
+    imports: [
+        MatButtonModule,
+        MatCardModule,
+        FormsModule
+    ],
+    templateUrl: './model-edit.component.html',
+    styleUrl: './model-edit.component.css'
 })
 export class ModelEditComponent {
   modelIdFromRoute: number;

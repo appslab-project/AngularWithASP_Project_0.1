@@ -18,25 +18,24 @@ import { AuthenticationService } from '../api-authorization/authentication.servi
   providedIn: 'root'
 })
 @Component({
-  selector: 'app-models',
-  standalone: true,
-  imports: [CommonModule,
-    MatToolbar,
-    MatButton,
-    RouterLink,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatTooltip,
-    MatCardModule,
-  ],
-  templateUrl: './models.component.html',
-  styleUrl: './models.component.css'
+    selector: 'app-models',
+    imports: [CommonModule,
+        MatToolbar,
+        MatButton,
+        RouterLink,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatIconModule,
+        MatTooltip,
+        MatCardModule,
+    ],
+    templateUrl: './models.component.html',
+    styleUrl: './models.component.css'
 })
 export class ModelsComponent {
 

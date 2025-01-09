@@ -10,19 +10,18 @@ import { equalValuesValidator, passwordStrengthValidator } from '../password-val
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-registration',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    MatInput,
-    MatIcon,
-    MatIconButton,
-    MatButton
-  ],
-  templateUrl: './registration.component.html',
-  styleUrl: './registration.component.css'
+    selector: 'app-registration',
+    imports: [
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        MatIcon,
+        MatIconButton,
+        MatButton
+    ],
+    templateUrl: './registration.component.html',
+    styleUrl: './registration.component.css'
 })
 export class RegistrationComponent implements OnInit {
   authService = inject(AuthenticationService);
