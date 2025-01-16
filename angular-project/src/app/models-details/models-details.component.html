@@ -23,10 +23,11 @@
     <div style="width: 500px; height: 500px;">
       <!--<stl-model-viewer [stlModels]="['/assets/modelsTest/3dbenchy.stl']">
   </stl-model-viewer>-->
-      <stl-model-viewer [stlModels]="['UploadedModels\\3dbenchy.stl']">
-      </stl-model-viewer>
-      <!--<stl-model-viewer [stlModels]="['{{modelDetailInfo().modelPath}}']">
+      <!--<stl-model-viewer [stlModels]="['UploadedModels\\3dbenchy.stl']">
       </stl-model-viewer>-->
+      <stl-model-viewer [stlModels]="['{{modelDetailInfo().modelPath}}']">
+      </stl-model-viewer>
+      <p>{{modelDetailInfo().modelPath}}</p>
     </div>
   </div>
 </body>
