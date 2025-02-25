@@ -1,62 +1,32 @@
 <body>
-
   <h1>Models</h1>
 
-  <form [formGroup]="modelCreateForm" (ngSubmit)="onSubmit()">
-
-    <div class="host">
-      <mat-form-field>
-        <mat-label>Model Name:</mat-label>
-        <input matInput id="modelName" type="text" formControlName="modelName">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Description:</mat-label>
-        <input matInput id="description" type="text" formControlName="description">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Category</mat-label>
-        <mat-select matInput id="category" type="text" formControlName="category">
-          <mat-option value="Work">Work</mat-option>
-          <mat-option value="Toys">Toys</mat-option>
-          <mat-option value="Parts">Parts</mat-option>
-          <mat-option value="Stands">Stands</mat-option>
-          <mat-option value="Vehicles">Vehicles</mat-option>
-          <mat-option value="Another">Another</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <button mat-button disabledInteractive [disabled]="modelCreateForm.invalid" matTooltip="You need to fill out the form!">
-        Submmit
-      </button>
-
-    </div>
-
-  </form>
-  
-
-
-  <div class="modelcomp" *ngFor="let models of modelInfo()">
-
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{models.name}}</mat-card-title>
-        <mat-card-subtitle>{{models.ownerId}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src={{models.picturePath}}  height="300" width="300">
-      <mat-card-content>
-        <p class="desc">{{models.category}}</p>
-      </mat-card-content>
-      <div class=" container">
-        <mat-card-actions>
-          <button mat-icon-button matTooltip="Like" aria-label="Example icon-button with a heart icon">
+  <div class="modelcomp-container">
+    <div class="modelcomp" *ngFor="let models of modelInfo()">
+      <div class="example-card">
+        <a [routerLink]="['/modelDetails', models.id]" class="card-link">
+          <!-- Klikateľná časť karty -->
+          <mat-card>
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{models.name}}</mat-card-title>
+              <mat-card-subtitle>{{models.ownerId}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src={{models.picturePath}}>
+            <mat-card-content>
+              <p class="desc">{{models.category}}</p>
+            </mat-card-content>
+          </mat-card>
+        </a>
+        <div class="container">
+          <!-- Tlačidlo Like s metódou stopPropagation -->
+          <button mat-icon-button matTooltip="Like" aria-label="Example icon-button with a heart icon" (click)="likeModel(models, $event)">
             <mat-icon>favorite</mat-icon>
           </button>
           <p class="desc">{{models.likes}}</p>
-          <button class="Details" mat-button [routerLink]="['/modelDetails', models.id]">Details</button>
-        </mat-card-actions>
+        </div>
       </div>
-    </mat-card> 
-
+    </div>
   </div>
+
 </body>
