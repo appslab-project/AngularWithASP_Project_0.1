@@ -8,9 +8,7 @@
       </mat-card-header>
       <img mat-card-image src={{modelDetailInfo().picturePath}}>
       <mat-card-content>
-        <!--<div>
-      <stl-model-viewer [stlModels]="['{{modelDetailInfo().modelPath}}']"></stl-model-viewer>
-    </div>-->
+
         <h3 class="desc">{{modelDetailInfo().category}}</h3>
         <mat-card-subtitle>{{modelDetailInfo().description}},</mat-card-subtitle>
       </mat-card-content>
@@ -21,10 +19,6 @@
   </div>
   <div>
     <div style="width: 500px; height: 500px;">
-      <!--<stl-model-viewer [stlModels]="['/assets/modelsTest/3dbenchy.stl']">
-  </stl-model-viewer>-->
-      <!--<stl-model-viewer [stlModels]="['UploadedModels\\3dbenchy.stl']">
-  </stl-model-viewer>-->
       <stl-model-viewer [stlModels]="[modelDetailInfo().modelPath]">
       </stl-model-viewer>
       <p>{{modelDetailInfo().modelPath}}</p>

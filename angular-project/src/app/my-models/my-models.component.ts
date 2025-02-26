@@ -39,7 +39,14 @@ export class MyModelsComponent {
 
   constructor(private model_service: ModelServiceService ) {
 
+
   }
+  likeModel(model: any, event: Event): void {
+    event.stopPropagation(); // Zastaví propagáciu udalosti na rodičovské prvky
+    model.likes += 1; // Príklad: Zvýši počet lajkov (prispôsobte podľa potreby)
+    console.log(`Liked model: ${model.name}`);
+  }
+
 
   ngOnInit() {
 
