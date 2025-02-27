@@ -74,5 +74,24 @@ button[mat-button][disabled] {
 }
 
 .upload {
-  display: block;
+  display: flex;
+  
+}
+
+.host {
+    display:flex;
+    flex-direction:column;
+    align-items: stretch;
+}
+
+
+.upload_buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.upload_containers {
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
 }

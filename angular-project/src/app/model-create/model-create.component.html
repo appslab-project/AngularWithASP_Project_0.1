@@ -26,15 +26,32 @@
       </mat-form-field>
 
       <!-- Image Upload -->
-      <div>
-        <label for="imageUpload" class="custom-upload-button">Upload Image</label>
-        <input id="imageUpload" type="file" (change)="onChangeImage($event)" accept=".jpg, .jpeg, .png">
-      </div>
+      <div class="upload_buttons">
+        <div class="upload_containers">
+          <div>
+            <label for="imageUpload" class="custom-upload-button">Upload Image</label>
+            <input id="imageUpload" type="file" (change)="onChangeImage($event)" accept=".jpg, .jpeg, .png">
+          </div>
+          <div class="col-md-4">
+            <span class="upload" *ngIf="progress > 0">{{progress}}%</span>
+            <span class="upload" *ngIf="message">{{message}}</span>
+          </div>
+        </div>
 
-      <!-- File Upload -->
-      <div style="margin-top:10px;">
-        <label for="fileUpload" class="custom-upload-button">Upload File</label>
-        <input id="fileUpload" type="file" (change)="onChangeFile($event)" accept=".stl">
+        <!-- File Upload -->
+        <div class="upload_containers">
+          <div style="margin-top:10px;">
+            <label for="fileUpload" class="custom-upload-button">Upload File</label>
+            <input id="fileUpload" type="file" (change)="onChangeFile($event)" accept=".stl">
+          </div>
+
+
+          <div class="col-md-4">
+            <span class="upload" *ngIf="progressFile > 0">{{progressFile}}%</span>
+            <span class="upload" *ngIf="messageFile">{{messageFile}}</span>
+          </div>
+        </div>
+
       </div>
 
       <!-- Submit Button -->
@@ -44,15 +61,7 @@
     </div>
 
     <!-- Progress Messages -->
-    <div class="col-md-4">
-      <span class="upload" *ngIf="progress > 0">{{progress}}%</span>
-      <span class="upload" *ngIf="message">{{message}}</span>
-    </div>
-
-    <div class="col-md-4">
-      <span class="upload" *ngIf="progressFile > 0">{{progressFile}}%</span>
-      <span class="upload" *ngIf="messageFile">{{messageFile}}</span>
-    </div>
+   
 
   </form>
 </body>
