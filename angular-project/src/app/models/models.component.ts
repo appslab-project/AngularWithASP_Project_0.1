@@ -13,6 +13,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { AuthenticationService } from '../api-authorization/authentication.service';
+import { FilterPipe } from '../models/filter.pipe';
 
 @Injectable({
   providedIn: 'root'
@@ -20,20 +21,21 @@ import { AuthenticationService } from '../api-authorization/authentication.servi
 @Component({
     selector: 'app-models',
     imports: [CommonModule,
-        MatToolbar,
-        MatButton,
-        RouterLink,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatDividerModule,
-        MatIconModule,
-        MatTooltip,
-        MatCardModule,
-    ],
+      MatToolbar,
+      MatButton,
+      RouterLink,
+      FormsModule,
+      ReactiveFormsModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatSelectModule,
+      MatButtonModule,
+      MatDividerModule,
+      MatIconModule,
+      MatTooltip,
+      MatCardModule,
+      FilterPipe,
+  ],
     templateUrl: './models.component.html',
     styleUrl: './models.component.css'
 })
@@ -46,6 +48,7 @@ export class ModelsComponent {
   category: string;
   description: string;
   picturePath: string;
+  filterText: string;
   constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder) {
 
     this.modelCreateForm = this.formBuilder.group({

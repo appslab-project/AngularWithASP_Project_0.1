@@ -2,7 +2,8 @@
   <h1>Models</h1>
 
   <div class="modelcomp-container">
-    <div class="modelcomp" *ngFor="let models of modelInfo()">
+    <input type="text" [(ngModel)]="filterText" placeholder="Search models..." />
+    <div class="modelcomp" *ngFor="let models of modelInfo() | filterPipe:filterText">
       <div class="example-card">
         <a [routerLink]="['/modelDetails', models.id]" class="card-link">
           <!-- Klikateľná časť karty -->
