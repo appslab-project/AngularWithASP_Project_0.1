@@ -1,8 +1,12 @@
 <body>
   <h1>Models</h1>
+  <div class="search-container">
+    <input type="text" [(ngModel)]="filterText" placeholder="Search models...">
+
+  </div>
+
 
   <div class="modelcomp-container">
-    <input type="text" [(ngModel)]="filterText" placeholder="Search models..." />
     <div class="modelcomp" *ngFor="let models of modelInfo() | filterPipe:filterText">
       <div class="example-card">
         <a [routerLink]="['/modelDetails', models.id]" class="card-link">
