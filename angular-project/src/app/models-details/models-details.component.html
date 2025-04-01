@@ -1,27 +1,32 @@
 <body>
-  <div>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{modelDetailInfo().name}}</mat-card-title>
-        <mat-card-subtitle>{{modelDetailInfo().ownerId}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src={{modelDetailInfo().picturePath}}>
-      <mat-card-content>
+  <div class="page-container">
+    <!-- Row container for model details and viewer -->
+    <div class="row-container">
+      <!-- Model Details Card -->
+      <div class="model-details">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{modelDetailInfo().name}}</mat-card-title>
+            <mat-card-subtitle>{{modelDetailInfo().ownerId}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src={{modelDetailInfo().picturePath}} alt="Model Image">
+          <mat-card-content>
+            <h3 class="desc">{{modelDetailInfo().category}}</h3>
+            <mat-card-subtitle>{{modelDetailInfo().description}}</mat-card-subtitle>
+          </mat-card-content>
+        </mat-card>
+        <!-- Download Button -->
+        <div class="download-container">
+          <a href={{modelDetailInfo().modelPath}} download class="download-btn">Download</a>
+        </div>
+      </div>
 
-        <h3 class="desc">{{modelDetailInfo().category}}</h3>
-        <mat-card-subtitle>{{modelDetailInfo().description}},</mat-card-subtitle>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div>
-    <a href={{modelDetailInfo().modelPath}} download class="download-btn">Stiahnuť</a>
-  </div>
-  <div>
-    <div style="width: 500px; height: 500px;">
-      <stl-model-viewer [stlModels]="[modelDetailInfo().modelPath]">
-      </stl-model-viewer>
-      <p>{{modelDetailInfo().modelPath}}</p>
+      <!-- STL Model Viewer -->
+      <div class="viewer-container">
+        <stl-model-viewer [stlModels]="[modelDetailInfo().modelPath]"></stl-model-viewer>
+        <p>{{modelDetailInfo().modelPath}}</p>
+      </div>
     </div>
   </div>
 </body>
