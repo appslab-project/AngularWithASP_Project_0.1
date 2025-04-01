@@ -53,6 +53,7 @@ export class ModelCreateComponent implements OnInit {
   //emitter uploadu
 
   @Output() public onUploadFinished = new EventEmitter();
+    router: any;
 
   constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder, private http: HttpClient) {
 
@@ -69,15 +70,15 @@ export class ModelCreateComponent implements OnInit {
     this.description = this.modelCreateForm.value.description;
     // TODO: Use EventEmitter with form value
     this.model_service.createModel(this.modelName, this.category, this.description).subscribe(modelPage => {
-      this.modelInfo.set(modelPage)
-
+      this.modelInfo.set(modelPage);
+      this.router.navigate(['/modelEdit', this.modelInfo]);
     }, error => console.error(error));
   }
 
   ngOnInit(): void {
 
   }
-
+  // [routerLink]="['/modelEdit', modelInfo()]" class="card-link"
   // Nefunkcny kód ale radsej ho tu zatial nechávam
 
 
