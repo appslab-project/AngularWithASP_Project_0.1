@@ -6,6 +6,7 @@ using AspNetCoreAPI.ServiceBE;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Collections.Immutable;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 
@@ -61,7 +62,7 @@ namespace AspNetCoreAPI.Controllers
         }
         [HttpPut("createModel")]
 
-        public IEnumerable<Modeldto> CreateModel(string modelName, string category, string description) 
+        public int CreateModel(string modelName, string category, string description) 
         {
             IEnumerable<ModelInformations> models = _context.ModelInformations;
             IEnumerable<Models.ModelImages> paths = _context.ModelImages;
@@ -78,7 +79,8 @@ namespace AspNetCoreAPI.Controllers
             _context.Add(info);
             _context.SaveChanges();
 
-            return _modelBeService.MapModelToDto(models, paths);
+            int currentId = models.Last().Id;
+            return currentId;
         }
         [HttpPut("deleteModel")]
         public IEnumerable<Modeldto> DeleteModel(int id)

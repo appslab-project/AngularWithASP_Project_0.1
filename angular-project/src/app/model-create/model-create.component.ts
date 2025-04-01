@@ -36,8 +36,7 @@ import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/ht
 export class ModelCreateComponent implements OnInit {
 
   public modelCreateForm: FormGroup;
-  modelInfo = signal<Modeldto[]>(undefined);
-
+  modelInfo = signal<number>(undefined);
 
   ownerId: string;
   modelName: string;

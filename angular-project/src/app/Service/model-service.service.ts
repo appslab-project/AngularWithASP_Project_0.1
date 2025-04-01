@@ -27,7 +27,7 @@ export class ModelServiceService {
       .set("category", category)
       .set("description", description)
 
-    return this.http.put<Modeldto[]>(this.baseUrl + '/models/createModel', null, { params: queryParams });
+    return this.http.put<number>(this.baseUrl + '/models/createModel', null, { params: queryParams });
 
   }
   getMyModels() {

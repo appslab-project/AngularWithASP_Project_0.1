@@ -69,16 +69,16 @@ export class ModelsComponent {
       this.modelInfo.set(modelPage);
     }, error => console.error(error));
   }
-  onSubmit() {
-    this.modelName = this.modelCreateForm.value.modelName;
-    this.category = this.modelCreateForm.value.category;
-    this.description = this.modelCreateForm.value.description;
+  //onSubmit() {
+  //  this.modelName = this.modelCreateForm.value.modelName;
+  //  this.category = this.modelCreateForm.value.category;
+  //  this.description = this.modelCreateForm.value.description;
  
-    // TODO: Use EventEmitter with form value
-    this.model_service.createModel(this.modelName, this.category, this.description).subscribe(modelPage => {
-      this.modelInfo.set(modelPage)
+  //  // TODO: Use EventEmitter with form value
+  //  this.model_service.createModel(this.modelName, this.category, this.description).subscribe(modelPage => {
+  //    this.modelInfo.set(modelPage)
 
-    }, error => console.error(error));
+  //  }, error => console.error(error));
   }
 
-}
+
