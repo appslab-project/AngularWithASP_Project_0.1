@@ -54,6 +54,7 @@ export class ModelCreateComponent implements OnInit {
   //emitter uploadu
 
   @Output() public onUploadFinished = new EventEmitter();
+    router: any;
 
   constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
 
@@ -84,7 +85,7 @@ export class ModelCreateComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
+  // [routerLink]="['/modelEdit', modelInfo()]" class="card-link"
   // Nefunkcny kód ale radsej ho tu zatial nechávam
 
 
