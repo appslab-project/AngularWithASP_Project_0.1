@@ -26,7 +26,7 @@
       </mat-form-field>
 
       <!-- Image Upload -->
-      <div class="upload_buttons">
+      <!--<div class="upload_buttons">
         <div class="upload_containers">
           <div>
             <label for="imageUpload" class="custom-upload-button">Upload Image</label>
@@ -36,10 +36,10 @@
             <span class="upload" *ngIf="progress > 0">{{progress}}%</span>
             <span class="upload" *ngIf="message">{{message}}</span>
           </div>
-        </div>
+        </div>-->
 
         <!-- File Upload -->
-        <div class="upload_containers">
+        <!--<div class="upload_containers">
           <div style="margin-top:10px;">
             <label for="fileUpload" class="custom-upload-button">Upload File</label>
             <input id="fileUpload" type="file" (change)="onChangeFile($event)" accept=".stl">
@@ -52,10 +52,10 @@
           </div>
         </div>
 
-      </div>
+      </div>-->
 
       <!-- Submit Button -->
-      <button mat-button [disabled]="modelCreateForm.invalid" matTooltip="You need to fill out the form!"  [routerLink]="['/modelEdit', modelInfo()]" class="card-link">
+      <button mat-button [disabled]="modelCreateForm.invalid" matTooltip="You need to fill out the form!" class="card-link" (click)="onSubmit()">
         Submit
       </button>
       <p>{{modelInfo()}}</p>

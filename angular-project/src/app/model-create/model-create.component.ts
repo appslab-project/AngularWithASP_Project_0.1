@@ -9,26 +9,27 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from '../api-authorization/authentication.service';
 import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
+
 
 
 @Component({
     selector: 'app-model-create',
     imports: [
-        CommonModule,
-        MatToolbar,
-        MatButton,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatDividerModule,
-        MatTooltip,
-        RouterModule,
+      CommonModule,
+      MatToolbar,
+      MatButton,
+      FormsModule,
+      ReactiveFormsModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatSelectModule,
+      MatButtonModule,
+      MatDividerModule,
+      MatTooltip,
+      RouterModule,
     ],
     templateUrl: './model-create.component.html',
     styleUrl: './model-create.component.css'
@@ -36,7 +37,7 @@ import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/ht
 export class ModelCreateComponent implements OnInit {
 
   public modelCreateForm: FormGroup;
-  modelInfo = signal<number>(undefined);
+  modelInfo = signal<number | undefined> (undefined);
 
   ownerId: string;
   modelName: string;
@@ -54,7 +55,7 @@ export class ModelCreateComponent implements OnInit {
 
   @Output() public onUploadFinished = new EventEmitter();
 
-  constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private model_service: ModelServiceService, private formBuilder: FormBuilder, private http: HttpClient, private router: Router) {
 
     this.modelCreateForm = this.formBuilder.group({
       modelName: ['', Validators.required],
@@ -64,14 +65,20 @@ export class ModelCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.modelName = this.modelCreateForm.value.modelName;
-    this.category = this.modelCreateForm.value.category;
-    this.description = this.modelCreateForm.value.description;
-    // TODO: Use EventEmitter with form value
-    this.model_service.createModel(this.modelName, this.category, this.description).subscribe(modelPage => {
-      this.modelInfo.set(modelPage)
+    if (this.modelCreateForm.valid) {
+      this.modelName = this.modelCreateForm.value.modelName!;
+      this.category = this.modelCreateForm.value.category!;
+      this.description = this.modelCreateForm.value.description!;
 
-    }, error => console.error(error));
+      this.model_service.createModel(this.modelName, this.category, this.description).subscribe({
+        next: (modelPage) => {
+          this.router.navigate(['/modelEdit', modelPage]);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+    }
   }
 
   ngOnInit(): void {
