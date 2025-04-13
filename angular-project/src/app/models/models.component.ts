@@ -58,9 +58,9 @@ export class ModelsComponent {
     });
   }
   likeModel(model: any, event: Event): void {
-    event.stopPropagation(); // Zastaví propagáciu udalosti na rodičovské prvky
+    this.model_service.submitLike(model.id);
+   // event.stopPropagation(); // Zastaví propagáciu udalosti na rodičovské prvky
     model.likes += 1; // Príklad: Zvýši počet lajkov (prispôsobte podľa potreby)
-    console.log(`Liked model: ${model.name}`);
   }
 
   ngOnInit() {
@@ -68,6 +68,7 @@ export class ModelsComponent {
     this.model_service.getModels().subscribe(modelPage => {
       this.modelInfo.set(modelPage);
     }, error => console.error(error));
+
   }
   //onSubmit() {
   //  this.modelName = this.modelCreateForm.value.modelName;

@@ -82,6 +82,21 @@ namespace AspNetCoreAPI.Controllers
             int currentId = models.Last().Id;
             return currentId;
         }
+        [HttpPut("submitLike")]
+        public int SubmitLike(int modelId)
+        {
+            var addLike = new Models.LikesOnModel
+            {
+                ModelId = modelId,
+                UserId = GetCurrentUser().Id,
+            };
+            _context.Add(addLike);
+            _context.SaveChanges();
+
+            int numberOfLikes = _context.LikesOnModel.Where(x => x.ModelId == modelId).Count();
+            return numberOfLikes;
+        }
+
         [HttpPut("deleteModel")]
         public IEnumerable<Modeldto> DeleteModel(int id)
         {

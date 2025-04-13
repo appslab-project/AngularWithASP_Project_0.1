@@ -43,6 +43,13 @@ export class ModelServiceService {
 
     return this.http.post( this.baseUrl + '/models/uploadImage', formData, { reportProgress: true, observe: 'events' })
   }
+  submitLike(modelId: number) {
+    let queryParams = new HttpParams()
+      .set("modelId", modelId)
+    return this.http.put<number>(this.baseUrl + '/models/submitLike', null, { params: queryParams });
+
+  }
+
 }
 
 export interface Modeldto {
