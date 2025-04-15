@@ -82,7 +82,8 @@ namespace AspNetCoreAPI.Controllers
             int currentId = models.Last().Id;
             return currentId;
         }
-        [HttpPut("submitLike")]
+
+        [HttpPut("submitLikes")]
         public int SubmitLike(int modelId)
         {
             var addLike = new Models.LikesOnModel

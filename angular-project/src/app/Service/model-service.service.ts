@@ -46,7 +46,7 @@ export class ModelServiceService {
   submitLike(modelId: number) {
     let queryParams = new HttpParams()
       .set("modelId", modelId)
-    return this.http.put<number>(this.baseUrl + '/models/submitLike', null, { params: queryParams });
+    return this.http.put<number>(this.baseUrl + '/models/submitLikes', null, { params: queryParams });
 
   }
 

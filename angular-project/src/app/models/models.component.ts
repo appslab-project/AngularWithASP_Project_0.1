@@ -19,31 +19,32 @@ import { FilterPipe } from '../models/filter.pipe';
   providedIn: 'root'
 })
 @Component({
-    selector: 'app-models',
-    imports: [CommonModule,
-      MatToolbar,
-      MatButton,
-      RouterLink,
-      FormsModule,
-      ReactiveFormsModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatSelectModule,
-      MatButtonModule,
-      MatDividerModule,
-      MatIconModule,
-      MatTooltip,
-      MatCardModule,
-      FilterPipe,
+  selector: 'app-models',
+  imports: [CommonModule,
+    MatToolbar,
+    MatButton,
+    RouterLink,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    MatTooltip,
+    MatCardModule,
+    FilterPipe,
   ],
-    templateUrl: './models.component.html',
-    styleUrl: './models.component.css'
+  templateUrl: './models.component.html',
+  styleUrl: './models.component.css'
 })
 export class ModelsComponent {
 
   public modelCreateForm: FormGroup;
   modelInfo = signal<Modeldto[]>(undefined);
- 
+  numberOfLikes = signal<number>(undefined);
+
   modelName: string;
   category: string;
   description: string;
@@ -57,10 +58,14 @@ export class ModelsComponent {
       description: ['', Validators.required]
     });
   }
-  likeModel(model: any, event: Event): void {
-    this.model_service.submitLike(model.id);
-   // event.stopPropagation(); // Zastaví propagáciu udalosti na rodičovské prvky
-    model.likes += 1; // Príklad: Zvýši počet lajkov (prispôsobte podľa potreby)
+  likeModel(modelId: number) {
+    this.model_service.submitLike(modelId).subscribe(likeNumber => {
+      this.numberOfLikes.set(likeNumber);
+      console.log(likeNumber);
+    },
+      error => console.error(error));
+    //event.stopPropagation(); // Zastaví propagáciu udalosti na rodičovské prvky
+    //model.likes += 1; // Príklad: Zvýši počet lajkov (prispôsobte podľa potreby)
   }
 
   ngOnInit() {
@@ -70,16 +75,6 @@ export class ModelsComponent {
     }, error => console.error(error));
 
   }
-  //onSubmit() {
-  //  this.modelName = this.modelCreateForm.value.modelName;
-  //  this.category = this.modelCreateForm.value.category;
-  //  this.description = this.modelCreateForm.value.description;
- 
-  //  // TODO: Use EventEmitter with form value
-  //  this.model_service.createModel(this.modelName, this.category, this.description).subscribe(modelPage => {
-  //    this.modelInfo.set(modelPage)
 
-  //  }, error => console.error(error));
-  }
-
+}
 

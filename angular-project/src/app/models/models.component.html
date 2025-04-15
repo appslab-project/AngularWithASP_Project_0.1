@@ -25,10 +25,10 @@
         </a>
         <div class="container">
           <!-- Tlačidlo Like s metódou stopPropagation -->
-          <button mat-icon-button matTooltip="Like" aria-label="Example icon-button with a heart icon" (click)="likeModel(models, $event)">
+          <button mat-icon-button matTooltip="Like" aria-label="Example icon-button with a heart icon" (click)="likeModel(models.id)">
             <mat-icon>favorite</mat-icon>
           </button>
-          <p class="desc">{{models.likes}}</p>
+          <p class="desc">{{numberOfLikes()}}</p>
         </div>
       </div>
     </div>
