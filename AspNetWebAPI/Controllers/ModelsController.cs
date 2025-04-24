@@ -84,7 +84,7 @@ namespace AspNetCoreAPI.Controllers
         }
 
         [HttpPut("submitLikes")]
-        public int SubmitLike(int modelId)
+        public IEnumerable<Modeldto> SubmitLike(int modelId)
         {
             var addLike = new Models.LikesOnModel
             {
@@ -93,10 +93,12 @@ namespace AspNetCoreAPI.Controllers
             };
             _context.Add(addLike);
             _context.SaveChanges();
-          
-            int numberOfLikes = _context.LikesOnModel.Where(x => x.ModelId == modelId).Count();
+            IEnumerable<ModelInformations> models = _context.ModelInformations;
+            IEnumerable<Models.ModelImages> paths = _context.ModelImages;
+            return _modelBeService.MapModelToDto(models, paths);
+           // int numberOfLikes = _context.LikesOnModel.Where(x => x.ModelId == modelId).Count();
             
-            return numberOfLikes;
+          // return numberOfLikes;
         }
 
         [HttpPut("deleteModel")]

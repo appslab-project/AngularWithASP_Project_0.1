@@ -59,11 +59,9 @@ export class ModelsComponent {
     });
   }
   likeModel(modelId: number) {
-    this.model_service.submitLike(modelId).subscribe(likeNumber => {
-      this.numberOfLikes.set(likeNumber);
-      console.log(likeNumber);
-    },
-      error => console.error(error));
+    this.model_service.submitLike(modelId).subscribe(modelPage => {
+      this.modelInfo.set(modelPage);
+    }, error => console.error(error));
     //event.stopPropagation(); // Zastaví propagáciu udalosti na rodičovské prvky
     //model.likes += 1; // Príklad: Zvýši počet lajkov (prispôsobte podľa potreby)
   }
