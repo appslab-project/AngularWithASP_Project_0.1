@@ -12,5 +12,6 @@
 
         public string OwnerId { get; set; }
         public string PicturePath { get ; set; }
+        public int NumberOfLikes { get; set; }
     }
 }

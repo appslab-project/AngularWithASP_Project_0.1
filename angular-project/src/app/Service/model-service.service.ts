@@ -59,6 +59,7 @@ export interface Modeldto {
   likes: number;
   ownerId: string;
   picturePath: string;
+  numberOfLikes: number;
 }
 export interface ModelDetailsdto {
   id: number;

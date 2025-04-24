@@ -93,8 +93,9 @@ namespace AspNetCoreAPI.Controllers
             };
             _context.Add(addLike);
             _context.SaveChanges();
-
+          
             int numberOfLikes = _context.LikesOnModel.Where(x => x.ModelId == modelId).Count();
+            
             return numberOfLikes;
         }
 

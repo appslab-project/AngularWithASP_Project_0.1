@@ -30,6 +30,7 @@ namespace AspNetCoreAPI.ServiceBE
         public IEnumerable<Modeldto> MapModelToDto(IEnumerable<ModelInformations> models, IEnumerable<ModelImages> paths)
         {
 
+
             return models.Select(models => new Modeldto
             {
 
@@ -39,6 +40,7 @@ namespace AspNetCoreAPI.ServiceBE
                 Likes = models.Likes,
                 OwnerId = models.OwnerId,
                 PicturePath = this.GetImagesFromPath(models.Id, paths),
+                NumberOfLikes = _context.LikesOnModel.Where(x => x.ModelId == models.Id).Count(),
 
             });
         }
